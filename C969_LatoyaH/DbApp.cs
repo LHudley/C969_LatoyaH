@@ -25,12 +25,17 @@ namespace C969_LatoyaH
             }
             return con;
         }
-        public static void LoginUser(Login lg)
-        {
-            string sql = "Select exist (Select * from user where username='userName' AND password='password')";
-            MySqlConnection con = GetConnection();
-            MySqlCommand cmd = new MySqlCommand(sql, con);
-            cmd.CommandType = CommandType.Text;
-        }
+        
+        //public static void AddUser(User user)
+        //{
+        //       // string sql = "Select exist (Select * from user where username='userName' AND password='password')";
+        //    //string sql = "Insert into client-schedule values (Null, @userName)";
+        //    //MySqlConnection con = GetConnection();
+        //    //MySqlCommand cmd = new MySqlCommand(sql, con);
+        //    //cmd.CommandType = CommandType.Text;
+        //    //cmd.Parameters.Add("@userName", MySqlDbType.VarChar).Value = user.UserName;
+
+
+        //}
     }
 }

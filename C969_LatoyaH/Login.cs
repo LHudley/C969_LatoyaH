@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,11 @@ namespace C969_LatoyaH
         {
             InitializeComponent();
             findLanguage();
+        }
+
+        private MySqlConnection GetConnection()
+        {
+            throw new NotImplementedException();
         }
 
 
@@ -50,9 +56,33 @@ namespace C969_LatoyaH
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            if (textUsername.Text.Trim().Length < 1)
+            {
+                MessageBox.Show("Username is empty");
+            }
+
+            if (textPassword.Text.Trim().Length < 1)
+            {
+                MessageBox.Show("Password is empty");
+            }
+            DbApp.GetConnection();
+            try
+            {
+                string sql = "Select exist (Select * from user where username='userName' AND password='password')";
+                MySqlConnection con = GetConnection();
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.CommandType = CommandType.Text;
+                object textUsername = null;
+                cmd.Parameters.AddWithValue("@userName", textUsername); ;
+            }
+            catch
+            {
+
+            }
 
         }
 
+      
         private void btnClear_Click(object sender, EventArgs e)
         {
             textUsername.Text = "";

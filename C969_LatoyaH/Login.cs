@@ -56,6 +56,9 @@ namespace C969_LatoyaH
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            string username = textUsername.Text;
+            string password = textPassword.Text;
+
             if (textUsername.Text.Trim().Length < 1)
             {
                 MessageBox.Show("Username is empty");
@@ -65,20 +68,15 @@ namespace C969_LatoyaH
             {
                 MessageBox.Show("Password is empty");
             }
-            DbApp.GetConnection();
-            try
-            {
-                string sql = "Select exist (Select * from user where username='userName' AND password='password')";
-                MySqlConnection con = GetConnection();
-                MySqlCommand cmd = new MySqlCommand(sql, con);
-                cmd.CommandType = CommandType.Text;
-                object textUsername = null;
-                cmd.Parameters.AddWithValue("@userName", textUsername); ;
-            }
-            catch
-            {
 
-            }
+            DbApp.LoginCreds(username, password);
+
+            this.Hide();
+
+            Appointments appt = new Appointments();
+            appt.ShowDialog();
+            this.Close();
+           
 
         }
 

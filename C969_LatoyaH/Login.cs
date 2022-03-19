@@ -69,14 +69,35 @@ namespace C969_LatoyaH
                 MessageBox.Show("Password is empty");
             }
 
-            DbApp.LoginCreds(username, password);
+            try
+            {
+                string sql = "server = localhost; port=3306; username = sqlUser; password=Passw0rd!; database = client_schedule";
+                MySqlConnection con = new MySqlConnection(sql);
+                MySqlDataAdapter sda = new MySqlDataAdapter("select count(*) from user where username= '"+textUsername.Text+"' and password='"+textPassword.Text+"'", con);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
 
-            this.Hide();
+                if (dt.Rows[0][0].ToString()== "1")
+                {
+                    MessageBox.Show("Username and Password are successfull!", "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
 
-            Appointments appt = new Appointments();
-            appt.ShowDialog();
-            this.Close();
-           
+                    Appointments appt = new Appointments();
+                    appt.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect Username or Password", "alter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("MySql Connection\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
 
         }
 

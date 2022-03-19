@@ -89,12 +89,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbApp.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Appointments.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Appointments.Designer.cs">
+      <DependentUpon>Appointments.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -105,8 +104,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Appointments.resx">
+      <DependentUpon>Appointments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

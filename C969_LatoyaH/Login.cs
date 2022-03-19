@@ -14,15 +14,12 @@ namespace C969_LatoyaH
 {
     public partial class Login : Form
     {
+        string loginError;
+        string loginSuccess;
         public Login()
         {
             InitializeComponent();
             findLanguage();
-        }
-
-        private MySqlConnection GetConnection()
-        {
-            throw new NotImplementedException();
         }
 
 
@@ -44,7 +41,10 @@ namespace C969_LatoyaH
         {
             labelUsername.Text = "Username";
             labelPassword.Text = "Password";
+            lblHeader.Text = "Acme Scheduling";
             btnLogin.Text = "Login";
+            loginError = "Incorrect Username or Password";
+            loginSuccess = "Username and Password are successfull!";
         }
 
         private void frenchLogin()
@@ -52,7 +52,11 @@ namespace C969_LatoyaH
 
             labelUsername.Text = "Nom D' Utilisateur";
             labelPassword.Text = "Le Mot De Passe";
+            lblHeader.Text = "Acme Planification";
             btnLogin.Text = "Connexion";
+            btnClear.Text = "klir";
+            loginError = "nom d'utilisateur et mot de passe incorrects";
+            loginSuccess = "le nom d'utilisateur et le mot de passe sont reussis!";
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -79,7 +83,7 @@ namespace C969_LatoyaH
 
                 if (dt.Rows[0][0].ToString()== "1")
                 {
-                    MessageBox.Show("Username and Password are successfull!", "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(loginSuccess, "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
 
                     Appointments appt = new Appointments();
@@ -88,7 +92,7 @@ namespace C969_LatoyaH
                 }
                 else
                 {
-                    MessageBox.Show("Incorrect Username or Password", "alter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(loginError, "alter", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 
             }

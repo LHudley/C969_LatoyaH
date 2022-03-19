@@ -36,7 +36,7 @@ namespace C969_LatoyaH
             this.labelPassword = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblHeader = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,17 +108,17 @@ namespace C969_LatoyaH
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // label1
+            // lblHeader
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(316, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 25);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Acme Scheduling ";
+            this.lblHeader.AutoSize = true;
+            this.lblHeader.BackColor = System.Drawing.Color.Transparent;
+            this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeader.ForeColor = System.Drawing.Color.White;
+            this.lblHeader.Location = new System.Drawing.Point(316, 24);
+            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Size = new System.Drawing.Size(201, 25);
+            this.lblHeader.TabIndex = 7;
+            this.lblHeader.Text = "Acme Scheduling ";
             // 
             // Login
             // 
@@ -127,7 +127,7 @@ namespace C969_LatoyaH
             this.BackgroundImage = global::C969_LatoyaH.Properties.Resources.pexels_francesco_ungaro_281260;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.labelPassword);
@@ -151,7 +151,7 @@ namespace C969_LatoyaH
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblHeader;
     }
 }
 

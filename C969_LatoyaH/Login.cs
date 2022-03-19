@@ -86,8 +86,8 @@ namespace C969_LatoyaH
                     MessageBox.Show(loginSuccess, "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
 
-                    Appointments appt = new Appointments();
-                    appt.ShowDialog();
+                    CustomerRecords ctRecords = new CustomerRecords();
+                    ctRecords.ShowDialog();
                     this.Close();
                 }
                 else

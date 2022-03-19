@@ -73,9 +73,49 @@ namespace C969_LatoyaH.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clipboard_8_32 {
+            get {
+                object obj = ResourceManager.GetObject("clipboard-8-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap database_32 {
+            get {
+                object obj = ResourceManager.GetObject("database-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap home_4_32 {
+            get {
+                object obj = ResourceManager.GetObject("home-4-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pexels_francesco_ungaro_281260 {
             get {
                 object obj = ResourceManager.GetObject("pexels-francesco-ungaro-281260", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap statistics_32 {
+            get {
+                object obj = ResourceManager.GetObject("statistics-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

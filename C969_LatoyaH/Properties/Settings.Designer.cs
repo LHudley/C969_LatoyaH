@@ -32,5 +32,15 @@ namespace C969_LatoyaH.Properties {
                 return ((string)(this["client_scheduleConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=sqlUser;password=Passw0rd!;database=client_schedule")]
+        public string client_scheduleConnectionString1 {
+            get {
+                return ((string)(this["client_scheduleConnectionString1"]));
+            }
+        }
     }
 }

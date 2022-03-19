@@ -95,6 +95,12 @@
     <Compile Include="Appointments.Designer.cs">
       <DependentUpon>Appointments.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomerRecords.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerRecords.Designer.cs">
+      <DependentUpon>CustomerRecords.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     <Compile Include="User.cs" />
     <EmbeddedResource Include="Appointments.resx">
       <DependentUpon>Appointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerRecords.resx">
+      <DependentUpon>CustomerRecords.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -137,6 +146,13 @@
   <ItemGroup>
     <Content Include="img\boss.png" />
     <Content Include="img\pexels-francesco-ungaro-281260.jpg" />
+    <None Include="Resources\statistics-32.png" />
+    <None Include="Resources\clipboard-8-32.png" />
+    <None Include="Resources\database-32.png" />
+    <None Include="Resources\home-4-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

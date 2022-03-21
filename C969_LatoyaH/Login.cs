@@ -62,6 +62,7 @@ namespace C969_LatoyaH
         {
             string username = textUsername.Text;
             string password = textPassword.Text;
+            
 
             if (textUsername.Text.Trim().Length < 1)
             {
@@ -84,6 +85,7 @@ namespace C969_LatoyaH
                 if (dt.Rows[0][0].ToString()== "1")
                 {
                     MessageBox.Show(loginSuccess, "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
                     this.Hide();
 
                     CustomerRecords ctRecords = new CustomerRecords();

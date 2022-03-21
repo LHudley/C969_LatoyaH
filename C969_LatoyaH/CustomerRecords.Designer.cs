@@ -30,19 +30,17 @@ namespace C969_LatoyaH
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
             this.btnAppt = new System.Windows.Forms.Button();
             this.btnRecords = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.RecordsdataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnRcAdd = new System.Windows.Forms.Button();
             this.btnRcUpdate = new System.Windows.Forms.Button();
             this.btnRcDelete = new System.Windows.Forms.Button();
+            this.labelTime = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsdataGridView1)).BeginInit();
@@ -51,9 +49,6 @@ namespace C969_LatoyaH
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(138)))), ((int)(((byte)(255)))));
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.btnReports);
             this.panel1.Controls.Add(this.btnAppt);
             this.panel1.Controls.Add(this.btnRecords);
@@ -62,61 +57,6 @@ namespace C969_LatoyaH
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(161, 455);
             this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
-            this.panel2.Location = new System.Drawing.Point(0, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(161, 52);
-            this.panel2.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(195)))), ((int)(((byte)(255)))));
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(159, -2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(640, 55);
-            this.panel3.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(229, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(158, 20);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Customer Records";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(0, 259);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(161, 52);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(0, 317);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(161, 52);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(0, 375);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(161, 52);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
             // 
             // btnReports
             // 
@@ -172,10 +112,38 @@ namespace C969_LatoyaH
             this.btnRecords.Text = "Records";
             this.btnRecords.UseVisualStyleBackColor = false;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(125)))), ((int)(((byte)(255)))));
+            this.panel2.Location = new System.Drawing.Point(0, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(161, 52);
+            this.panel2.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(195)))), ((int)(((byte)(255)))));
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Location = new System.Drawing.Point(159, -2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(640, 55);
+            this.panel3.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(229, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(158, 20);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Customer Records";
+            // 
             // RecordsdataGridView1
             // 
             this.RecordsdataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.RecordsdataGridView1.Location = new System.Drawing.Point(190, 83);
+            this.RecordsdataGridView1.Location = new System.Drawing.Point(190, 98);
             this.RecordsdataGridView1.Name = "RecordsdataGridView1";
             this.RecordsdataGridView1.RowHeadersVisible = false;
             this.RecordsdataGridView1.Size = new System.Drawing.Size(583, 284);
@@ -220,11 +188,21 @@ namespace C969_LatoyaH
             this.btnRcDelete.UseVisualStyleBackColor = false;
             this.btnRcDelete.Click += new System.EventHandler(this.btnRcDelete_Click);
             // 
+            // labelTime
+            // 
+            this.labelTime.AutoSize = true;
+            this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTime.Location = new System.Drawing.Point(337, 73);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(0, 15);
+            this.labelTime.TabIndex = 6;
+            // 
             // CustomerRecords
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelTime);
             this.Controls.Add(this.btnRcDelete);
             this.Controls.Add(this.btnRcUpdate);
             this.Controls.Add(this.btnRcAdd);
@@ -238,6 +216,7 @@ namespace C969_LatoyaH
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsdataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -247,9 +226,6 @@ namespace C969_LatoyaH
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnReports;
         private System.Windows.Forms.Button btnAppt;
         private System.Windows.Forms.Button btnRecords;
@@ -257,5 +233,6 @@ namespace C969_LatoyaH
         private System.Windows.Forms.Button btnRcAdd;
         private System.Windows.Forms.Button btnRcUpdate;
         private System.Windows.Forms.Button btnRcDelete;
+        private System.Windows.Forms.Label labelTime;
     }
 }

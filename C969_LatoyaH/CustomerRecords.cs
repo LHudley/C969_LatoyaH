@@ -18,11 +18,14 @@ namespace C969_LatoyaH
         public CustomerRecords()
         {
             InitializeComponent();
+            GetTime();
+            
         }
 
         private void CustomerRecords_Load(object sender, EventArgs e)
         {
             RecordsdataGridView1.DataSource = GetCustomerRecords();
+            
         }
         private DataTable GetCustomerRecords()
         {
@@ -34,15 +37,37 @@ namespace C969_LatoyaH
                 {
                     con.Open();
                     MySqlDataReader rd = cmd.ExecuteReader();
+
+                    //while (rd.Read())
+                    //{
+                    //    int customerId = Convert.ToInt32(rd[0]);
+                    //    string customerName = rd[1].ToString();
+                    //    int addressId = Convert.ToInt32(rd[2]);
+                    //    int active = Convert.ToInt32(rd[3]);
+                    //    DateTime createdDate = Convert.ToDateTime(rd[4]).ToLocalTime();
+                    //    string creaedBy = rd[5].ToString();
+                    //    DateTime lastUpdate = Convert.ToDateTime(rd[6]).ToLocalTime();
+                    //    string lastUpdateBy = rd[7].ToString();
+
+                    //}
                     dtCustomer.Load(rd);
                 }
             }
                 return dtCustomer;
         }
+        private void GetTime()
+        {
+
+            labelTime.Text = $"Logged in on {DateTime.Now.ToUniversalTime()}";
+
+        }
+        
 
         private void btnRcAdd_Click(object sender, EventArgs e)
         {
-
+            AddRecord addRecords = new AddRecord();
+            addRecords.ShowDialog();
+            this.Close();
         }
 
         private void btnRcUpdate_Click(object sender, EventArgs e)

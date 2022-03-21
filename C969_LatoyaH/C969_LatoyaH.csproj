@@ -89,11 +89,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Appointments.cs">
+    <Compile Include="AddRecord.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Appointments.Designer.cs">
-      <DependentUpon>Appointments.cs</DependentUpon>
+    <Compile Include="AddRecord.Designer.cs">
+      <DependentUpon>AddRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Address.cs" />
+    <Compile Include="Appointment.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="Country.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="Schedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Schedule.Designer.cs">
+      <DependentUpon>Schedule.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomerRecords.cs">
       <SubType>Form</SubType>
@@ -110,8 +121,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
-    <EmbeddedResource Include="Appointments.resx">
-      <DependentUpon>Appointments.cs</DependentUpon>
+    <EmbeddedResource Include="AddRecord.resx">
+      <DependentUpon>AddRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schedule.resx">
+      <DependentUpon>Schedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomerRecords.resx">
       <DependentUpon>CustomerRecords.cs</DependentUpon>

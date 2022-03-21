@@ -37,6 +37,7 @@ namespace C969_LatoyaH
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.lblHeader = new System.Windows.Forms.Label();
+            this.lblTime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,6 +121,16 @@ namespace C969_LatoyaH
             this.lblHeader.TabIndex = 7;
             this.lblHeader.Text = "Acme Scheduling ";
             // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.BackColor = System.Drawing.Color.Transparent;
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.Location = new System.Drawing.Point(501, 283);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(0, 15);
+            this.lblTime.TabIndex = 8;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -127,6 +138,7 @@ namespace C969_LatoyaH
             this.BackgroundImage = global::C969_LatoyaH.Properties.Resources.pexels_francesco_ungaro_281260;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblTime);
             this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnLogin);
@@ -152,6 +164,7 @@ namespace C969_LatoyaH
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label lblHeader;
+        private System.Windows.Forms.Label lblTime;
     }
 }
 

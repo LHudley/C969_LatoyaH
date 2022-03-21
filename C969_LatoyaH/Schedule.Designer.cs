@@ -1,7 +1,7 @@
 ﻿
 namespace C969_LatoyaH
 {
-    partial class Appointments
+    partial class Schedule
     {
         /// <summary>
         /// Required designer variable.
@@ -31,13 +31,13 @@ namespace C969_LatoyaH
         {
             this.SuspendLayout();
             // 
-            // Appointments
+            // Schedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Appointments";
-            this.Text = "Appointments";
+            this.Name = "Schedule";
+            this.Text = "Schedule";
             this.ResumeLayout(false);
 
         }

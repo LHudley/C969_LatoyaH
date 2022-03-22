@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace C969_LatoyaH
 {
-    public partial class AddRecord : Form
+    public partial class Reports : Form
     {
-        public AddRecord()
+        public Reports()
         {
             InitializeComponent();
         }

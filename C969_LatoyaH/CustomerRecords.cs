@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using C969_LatoyaH.Db_formshelper;
 
 namespace C969_LatoyaH
 {
@@ -27,33 +28,26 @@ namespace C969_LatoyaH
             RecordsdataGridView1.DataSource = GetCustomerRecords();
             
         }
-        private DataTable GetCustomerRecords()
+        public static DataTable GetCustomerRecords()
         {
-            DataTable dtCustomer = new DataTable();
-            string connRecords= ConfigurationManager.ConnectionStrings["C969_LatoyaH.Properties.Settings.client_scheduleConnectionString"].ConnectionString;
-            using (MySqlConnection con = new MySqlConnection(connRecords))
-            {
-                using (MySqlCommand cmd = new MySqlCommand("Select * from customer", con))
+           
+                DataTable dtCustomer = new DataTable();          
+                string connRecords = ConfigurationManager.ConnectionStrings["C969_LatoyaH.Properties.Settings.client_scheduleConnectionString"].ConnectionString;               
+                using (MySqlConnection con = new MySqlConnection(connRecords))
                 {
-                    con.Open();
-                    MySqlDataReader rd = cmd.ExecuteReader();
-
-                    //while (rd.Read())
-                    //{
-                    //    int customerId = Convert.ToInt32(rd[0]);
-                    //    string customerName = rd[1].ToString();
-                    //    int addressId = Convert.ToInt32(rd[2]);
-                    //    int active = Convert.ToInt32(rd[3]);
-                    //    DateTime createdDate = Convert.ToDateTime(rd[4]).ToLocalTime();
-                    //    string creaedBy = rd[5].ToString();
-                    //    DateTime lastUpdate = Convert.ToDateTime(rd[6]).ToLocalTime();
-                    //    string lastUpdateBy = rd[7].ToString();
-
-                    //}
-                    dtCustomer.Load(rd);
+                    using (MySqlCommand cmd = new MySqlCommand("Select customer.customerId, customer.customerName, address.address, address.address2, " +
+                        "address.postalCode, address.phone,city.city,country.country from customer join address on customer.addressId=address.addressId" +
+                        " join city on address.cityId=city.cityId join country on city.countryId=country.countryId;", con))
+                    {
+                        con.Open();
+                        MySqlDataReader rd = cmd.ExecuteReader();
+                        dtCustomer.Load(rd);
+                    }
                 }
-            }
                 return dtCustomer;
+           
+
+
         }
         private void GetTime()
         {
@@ -65,9 +59,17 @@ namespace C969_LatoyaH
 
         private void btnRcAdd_Click(object sender, EventArgs e)
         {
-            AddRecord addRecords = new AddRecord();
-            addRecords.ShowDialog();
-            this.Close();
+            string customerName = txtCusAdd.Text;
+            string address1 = txtCusAdd.Text;
+            string address2 = txtCusAdd2.Text;
+            string postalCode = txtCusZip.Text;
+            string phone = txtCusPhone.Text;
+            string city = txtCusCity.Text;
+            string country = txtCusCountry.Text;
+            int customerId, addressId;
+
+            customerId = DatabaseHelpers.AddNewCustomer(customerName, addressId, user);
+
         }
 
         private void btnRcUpdate_Click(object sender, EventArgs e)
@@ -78,6 +80,31 @@ namespace C969_LatoyaH
         private void btnRcDelete_Click(object sender, EventArgs e)
         {
 
+        }
+        /// <summary>
+        /// //////////////////////////Navigation to other forms///////////////////////
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAppt_Click(object sender, EventArgs e)
+        {
+            Schedule schedule = new Schedule();
+            schedule.ShowDialog();
+            this.Close();
+        }
+
+        private void btnRecords_Click(object sender, EventArgs e)
+        {
+            CustomerRecords custRecords = new CustomerRecords();
+            custRecords.ShowDialog();
+            this.Close();
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            Reports report = new Reports();
+            report.ShowDialog();
+            this.Close();
         }
     }
 }

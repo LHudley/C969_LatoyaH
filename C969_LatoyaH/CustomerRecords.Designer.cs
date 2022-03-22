@@ -41,6 +41,20 @@ namespace C969_LatoyaH
             this.btnRcUpdate = new System.Windows.Forms.Button();
             this.btnRcDelete = new System.Windows.Forms.Button();
             this.labelTime = new System.Windows.Forms.Label();
+            this.lblCusAdd1 = new System.Windows.Forms.Label();
+            this.lblAddress2 = new System.Windows.Forms.Label();
+            this.lblCusCity = new System.Windows.Forms.Label();
+            this.lblCusZip = new System.Windows.Forms.Label();
+            this.lblCusCountry = new System.Windows.Forms.Label();
+            this.lblCusPhone = new System.Windows.Forms.Label();
+            this.lblCusName = new System.Windows.Forms.Label();
+            this.txtCusAdd = new System.Windows.Forms.TextBox();
+            this.txtCusAdd1 = new System.Windows.Forms.TextBox();
+            this.txtCusAdd2 = new System.Windows.Forms.TextBox();
+            this.txtCusCity = new System.Windows.Forms.TextBox();
+            this.txtCusZip = new System.Windows.Forms.TextBox();
+            this.txtCusCountry = new System.Windows.Forms.TextBox();
+            this.txtCusPhone = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsdataGridView1)).BeginInit();
@@ -55,62 +69,62 @@ namespace C969_LatoyaH
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(0, -2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(161, 455);
+            this.panel1.Size = new System.Drawing.Size(161, 679);
             this.panel1.TabIndex = 0;
             // 
             // btnReports
             // 
             this.btnReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnReports.FlatAppearance.BorderSize = 0;
-            this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReports.ForeColor = System.Drawing.Color.White;
             this.btnReports.Image = global::C969_LatoyaH.Properties.Resources.statistics_32;
             this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(0, 201);
+            this.btnReports.Location = new System.Drawing.Point(0, 300);
             this.btnReports.Name = "btnReports";
             this.btnReports.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.btnReports.Size = new System.Drawing.Size(161, 52);
+            this.btnReports.Size = new System.Drawing.Size(161, 94);
             this.btnReports.TabIndex = 4;
             this.btnReports.Text = "Reports";
             this.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnReports.UseVisualStyleBackColor = false;
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // btnAppt
             // 
             this.btnAppt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnAppt.FlatAppearance.BorderSize = 0;
-            this.btnAppt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAppt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAppt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAppt.ForeColor = System.Drawing.Color.White;
             this.btnAppt.Image = global::C969_LatoyaH.Properties.Resources.clipboard_8_32;
             this.btnAppt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAppt.Location = new System.Drawing.Point(0, 143);
+            this.btnAppt.Location = new System.Drawing.Point(0, 100);
             this.btnAppt.Name = "btnAppt";
             this.btnAppt.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.btnAppt.Size = new System.Drawing.Size(161, 52);
+            this.btnAppt.Size = new System.Drawing.Size(161, 94);
             this.btnAppt.TabIndex = 3;
             this.btnAppt.Text = "Appointments";
             this.btnAppt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAppt.UseVisualStyleBackColor = false;
+            this.btnAppt.Click += new System.EventHandler(this.btnAppt_Click);
             // 
             // btnRecords
             // 
             this.btnRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnRecords.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnRecords.FlatAppearance.BorderSize = 0;
-            this.btnRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRecords.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecords.ForeColor = System.Drawing.Color.White;
             this.btnRecords.Image = global::C969_LatoyaH.Properties.Resources.database_32;
             this.btnRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRecords.Location = new System.Drawing.Point(0, 85);
+            this.btnRecords.Location = new System.Drawing.Point(0, 200);
             this.btnRecords.Name = "btnRecords";
             this.btnRecords.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.btnRecords.Size = new System.Drawing.Size(161, 52);
+            this.btnRecords.Size = new System.Drawing.Size(161, 94);
             this.btnRecords.TabIndex = 2;
             this.btnRecords.Text = "Records";
             this.btnRecords.UseVisualStyleBackColor = false;
+            this.btnRecords.Click += new System.EventHandler(this.btnRecords_Click);
             // 
             // panel2
             // 
@@ -197,11 +211,144 @@ namespace C969_LatoyaH
             this.labelTime.Size = new System.Drawing.Size(0, 15);
             this.labelTime.TabIndex = 6;
             // 
+            // lblCusAdd1
+            // 
+            this.lblCusAdd1.AutoSize = true;
+            this.lblCusAdd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusAdd1.Location = new System.Drawing.Point(177, 481);
+            this.lblCusAdd1.Name = "lblCusAdd1";
+            this.lblCusAdd1.Size = new System.Drawing.Size(62, 15);
+            this.lblCusAdd1.TabIndex = 7;
+            this.lblCusAdd1.Text = "Address:";
+            // 
+            // lblAddress2
+            // 
+            this.lblAddress2.AutoSize = true;
+            this.lblAddress2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddress2.Location = new System.Drawing.Point(177, 511);
+            this.lblAddress2.Name = "lblAddress2";
+            this.lblAddress2.Size = new System.Drawing.Size(74, 15);
+            this.lblAddress2.TabIndex = 8;
+            this.lblAddress2.Text = "Address 2:";
+            // 
+            // lblCusCity
+            // 
+            this.lblCusCity.AutoSize = true;
+            this.lblCusCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusCity.Location = new System.Drawing.Point(177, 544);
+            this.lblCusCity.Name = "lblCusCity";
+            this.lblCusCity.Size = new System.Drawing.Size(34, 15);
+            this.lblCusCity.TabIndex = 9;
+            this.lblCusCity.Text = "City:";
+            // 
+            // lblCusZip
+            // 
+            this.lblCusZip.AutoSize = true;
+            this.lblCusZip.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusZip.Location = new System.Drawing.Point(177, 578);
+            this.lblCusZip.Name = "lblCusZip";
+            this.lblCusZip.Size = new System.Drawing.Size(31, 15);
+            this.lblCusZip.TabIndex = 10;
+            this.lblCusZip.Text = "Zip:";
+            // 
+            // lblCusCountry
+            // 
+            this.lblCusCountry.AutoSize = true;
+            this.lblCusCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusCountry.Location = new System.Drawing.Point(177, 608);
+            this.lblCusCountry.Name = "lblCusCountry";
+            this.lblCusCountry.Size = new System.Drawing.Size(59, 15);
+            this.lblCusCountry.TabIndex = 11;
+            this.lblCusCountry.Text = "Country:";
+            // 
+            // lblCusPhone
+            // 
+            this.lblCusPhone.AutoSize = true;
+            this.lblCusPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusPhone.Location = new System.Drawing.Point(177, 635);
+            this.lblCusPhone.Name = "lblCusPhone";
+            this.lblCusPhone.Size = new System.Drawing.Size(52, 15);
+            this.lblCusPhone.TabIndex = 12;
+            this.lblCusPhone.Text = "Phone:";
+            // 
+            // lblCusName
+            // 
+            this.lblCusName.AutoSize = true;
+            this.lblCusName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCusName.Location = new System.Drawing.Point(177, 447);
+            this.lblCusName.Name = "lblCusName";
+            this.lblCusName.Size = new System.Drawing.Size(49, 15);
+            this.lblCusName.TabIndex = 13;
+            this.lblCusName.Text = "Name:";
+            // 
+            // txtCusName
+            // 
+            this.txtCusAdd.Location = new System.Drawing.Point(313, 447);
+            this.txtCusAdd.Name = "txtCusName";
+            this.txtCusAdd.Size = new System.Drawing.Size(345, 20);
+            this.txtCusAdd.TabIndex = 14;
+            // 
+            // txtCusAdd1
+            // 
+            this.txtCusAdd1.Location = new System.Drawing.Point(313, 476);
+            this.txtCusAdd1.Name = "txtCusAdd1";
+            this.txtCusAdd1.Size = new System.Drawing.Size(345, 20);
+            this.txtCusAdd1.TabIndex = 15;
+            // 
+            // txtCusAdd2
+            // 
+            this.txtCusAdd2.Location = new System.Drawing.Point(313, 506);
+            this.txtCusAdd2.Name = "txtCusAdd2";
+            this.txtCusAdd2.Size = new System.Drawing.Size(345, 20);
+            this.txtCusAdd2.TabIndex = 16;
+            // 
+            // txtCusCity
+            // 
+            this.txtCusCity.Location = new System.Drawing.Point(313, 539);
+            this.txtCusCity.Name = "txtCusCity";
+            this.txtCusCity.Size = new System.Drawing.Size(345, 20);
+            this.txtCusCity.TabIndex = 17;
+            // 
+            // txtCusZip
+            // 
+            this.txtCusZip.Location = new System.Drawing.Point(313, 573);
+            this.txtCusZip.Name = "txtCusZip";
+            this.txtCusZip.Size = new System.Drawing.Size(345, 20);
+            this.txtCusZip.TabIndex = 18;
+            // 
+            // txtCusCountry
+            // 
+            this.txtCusCountry.Location = new System.Drawing.Point(313, 603);
+            this.txtCusCountry.Name = "txtCusCountry";
+            this.txtCusCountry.Size = new System.Drawing.Size(345, 20);
+            this.txtCusCountry.TabIndex = 19;
+            // 
+            // txtCusPhone
+            // 
+            this.txtCusPhone.Location = new System.Drawing.Point(313, 630);
+            this.txtCusPhone.Name = "txtCusPhone";
+            this.txtCusPhone.Size = new System.Drawing.Size(345, 20);
+            this.txtCusPhone.TabIndex = 20;
+            // 
             // CustomerRecords
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(798, 676);
+            this.Controls.Add(this.txtCusPhone);
+            this.Controls.Add(this.txtCusCountry);
+            this.Controls.Add(this.txtCusZip);
+            this.Controls.Add(this.txtCusCity);
+            this.Controls.Add(this.txtCusAdd2);
+            this.Controls.Add(this.txtCusAdd1);
+            this.Controls.Add(this.txtCusAdd);
+            this.Controls.Add(this.lblCusName);
+            this.Controls.Add(this.lblCusPhone);
+            this.Controls.Add(this.lblCusCountry);
+            this.Controls.Add(this.lblCusZip);
+            this.Controls.Add(this.lblCusCity);
+            this.Controls.Add(this.lblAddress2);
+            this.Controls.Add(this.lblCusAdd1);
             this.Controls.Add(this.labelTime);
             this.Controls.Add(this.btnRcDelete);
             this.Controls.Add(this.btnRcUpdate);
@@ -234,5 +381,19 @@ namespace C969_LatoyaH
         private System.Windows.Forms.Button btnRcUpdate;
         private System.Windows.Forms.Button btnRcDelete;
         private System.Windows.Forms.Label labelTime;
+        private System.Windows.Forms.Label lblCusAdd1;
+        private System.Windows.Forms.Label lblAddress2;
+        private System.Windows.Forms.Label lblCusCity;
+        private System.Windows.Forms.Label lblCusZip;
+        private System.Windows.Forms.Label lblCusCountry;
+        private System.Windows.Forms.Label lblCusPhone;
+        private System.Windows.Forms.Label lblCusName;
+        private System.Windows.Forms.TextBox txtCusAdd;
+        private System.Windows.Forms.TextBox txtCusAdd1;
+        private System.Windows.Forms.TextBox txtCusAdd2;
+        private System.Windows.Forms.TextBox txtCusCity;
+        private System.Windows.Forms.TextBox txtCusZip;
+        private System.Windows.Forms.TextBox txtCusCountry;
+        private System.Windows.Forms.TextBox txtCusPhone;
     }
 }

@@ -78,7 +78,7 @@ namespace C969_LatoyaH
             {
                 string sql = "server = localhost; port=3306; username = sqlUser; password=Passw0rd!; database = client_schedule";
                 MySqlConnection con = new MySqlConnection(sql);
-                MySqlDataAdapter sda = new MySqlDataAdapter("select count(*) from user where username= '"+textUsername.Text+"' and password='"+textPassword.Text+"'", con);
+                MySqlDataAdapter sda = new MySqlDataAdapter("select count(*) from user where username= '" + textUsername.Text + "' and password='" + textPassword.Text + "'", con);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
 
@@ -88,8 +88,8 @@ namespace C969_LatoyaH
                     
                     this.Hide();
 
-                    CustomerRecords ctRecords = new CustomerRecords();
-                    ctRecords.ShowDialog();
+                    CustomerRecords custRecords = new CustomerRecords();
+                    custRecords.ShowDialog();
                     this.Close();
                 }
                 else

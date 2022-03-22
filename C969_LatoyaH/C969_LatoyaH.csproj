@@ -89,17 +89,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddRecord.cs">
+    <Compile Include="Data_Classes\Address.cs" />
+    <Compile Include="Data_Classes\Appointment.cs" />
+    <Compile Include="Data_Classes\City.cs" />
+    <Compile Include="Data_Classes\Country.cs" />
+    <Compile Include="Data_Classes\Customer.cs" />
+    <Compile Include="Db_formshelper\DatabaseHelpers.cs" />
+    <Compile Include="Reports.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddRecord.Designer.cs">
-      <DependentUpon>AddRecord.cs</DependentUpon>
+    <Compile Include="Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
-    <Compile Include="Address.cs" />
-    <Compile Include="Appointment.cs" />
-    <Compile Include="City.cs" />
-    <Compile Include="Country.cs" />
-    <Compile Include="Customer.cs" />
     <Compile Include="Schedule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,10 +121,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User.cs" />
-    <EmbeddedResource Include="AddRecord.resx">
-      <DependentUpon>AddRecord.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Data_Classes\User.cs" />
     <EmbeddedResource Include="Schedule.resx">
       <DependentUpon>Schedule.cs</DependentUpon>
     </EmbeddedResource>

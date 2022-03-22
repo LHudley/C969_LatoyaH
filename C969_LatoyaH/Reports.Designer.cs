@@ -1,7 +1,7 @@
 ﻿
 namespace C969_LatoyaH
 {
-    partial class AddRecord
+    partial class Reports
     {
         /// <summary>
         /// Required designer variable.
@@ -29,17 +29,10 @@ namespace C969_LatoyaH
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // AddRecord
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(361, 450);
-            this.Name = "AddRecord";
-            this.Text = "AddRecord";
-            this.ResumeLayout(false);
-
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "Reports";
         }
 
         #endregion

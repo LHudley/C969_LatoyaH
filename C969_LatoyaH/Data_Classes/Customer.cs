@@ -18,6 +18,11 @@ namespace C969_LatoyaH
         public DateTime LastUpdate { get; set; }
 
         public static int count = 0;
+        private int v;
+        private DateTime currentTm1;
+        private string user1;
+        private DateTime currentTm2;
+        private string user2;
 
         public Customer(int customerId, string customerName, int addressId, int active, string createdBy, string lastUpdateBy,
             DateTime createDate, DateTime lastUpdate)
@@ -36,6 +41,17 @@ namespace C969_LatoyaH
                 count = customerId;
                 count++;
             }
+        }
+
+        public Customer(string customerName, int addressId, int v, DateTime currentTm1, string user1, DateTime currentTm2, string user2)
+        {
+            CustomerName = customerName;
+            AddressId = addressId;
+            this.v = v;
+            this.currentTm1 = currentTm1;
+            this.user1 = user1;
+            this.currentTm2 = currentTm2;
+            this.user2 = user2;
         }
     }
 }

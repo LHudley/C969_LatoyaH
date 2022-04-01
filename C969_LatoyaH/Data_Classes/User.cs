@@ -9,14 +9,14 @@ namespace C969_LatoyaH
     public class User
     {
        
-            public int UserId { get; set; }
-            public string UserName { get; set; }
-            public string Password { get; set; }
-            public string CreatedBy { get; set; }
-            public string LastUpdateBy { get; set; }
-            public DateTime CreateDate { get; set; }
-            public DateTime LastUpdate { get; set; }
-            public byte Active { get; set; }
+            public static  int UserId { get; set; }
+            public static string UserName { get; set; }
+            public static string Password { get; set; }
+            public static string CreatedBy { get; set; }
+            public static string LastUpdateBy { get; set; }
+            public static DateTime CreateDate { get; set; }
+            public static DateTime LastUpdate { get; set; }
+            public static byte Active { get; set; }
             
       
             public User(int userId, string username, string password, string createdBy, string lastUpdateBy, DateTime createDate, DateTime lastUpdate, int active)

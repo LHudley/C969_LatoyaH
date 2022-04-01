@@ -89,12 +89,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContext.cs" />
     <Compile Include="Data_Classes\Address.cs" />
     <Compile Include="Data_Classes\Appointment.cs" />
     <Compile Include="Data_Classes\City.cs" />
     <Compile Include="Data_Classes\Country.cs" />
     <Compile Include="Data_Classes\Customer.cs" />
-    <Compile Include="Db_formshelper\DatabaseHelpers.cs" />
     <Compile Include="Reports.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +158,7 @@
   <ItemGroup>
     <Content Include="img\boss.png" />
     <Content Include="img\pexels-francesco-ungaro-281260.jpg" />
+    <None Include="Resources\house-32.png" />
     <None Include="Resources\statistics-32.png" />
     <None Include="Resources\clipboard-8-32.png" />
     <None Include="Resources\database-32.png" />

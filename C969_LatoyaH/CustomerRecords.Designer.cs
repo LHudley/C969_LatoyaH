@@ -30,6 +30,7 @@ namespace C969_LatoyaH
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnMainForm = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
             this.btnAppt = new System.Windows.Forms.Button();
             this.btnRecords = new System.Windows.Forms.Button();
@@ -63,6 +64,7 @@ namespace C969_LatoyaH
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(138)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.btnMainForm);
             this.panel1.Controls.Add(this.btnReports);
             this.panel1.Controls.Add(this.btnAppt);
             this.panel1.Controls.Add(this.btnRecords);
@@ -72,6 +74,23 @@ namespace C969_LatoyaH
             this.panel1.Size = new System.Drawing.Size(161, 679);
             this.panel1.TabIndex = 0;
             // 
+            // btnMainForm
+            // 
+            this.btnMainForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnMainForm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMainForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMainForm.ForeColor = System.Drawing.Color.White;
+            this.btnMainForm.Image = global::C969_LatoyaH.Properties.Resources.house_32;
+            this.btnMainForm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMainForm.Location = new System.Drawing.Point(0, 75);
+            this.btnMainForm.Name = "btnMainForm";
+            this.btnMainForm.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.btnMainForm.Size = new System.Drawing.Size(161, 94);
+            this.btnMainForm.TabIndex = 5;
+            this.btnMainForm.Text = "Home";
+            this.btnMainForm.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMainForm.UseVisualStyleBackColor = false;
+            // 
             // btnReports
             // 
             this.btnReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -80,7 +99,7 @@ namespace C969_LatoyaH
             this.btnReports.ForeColor = System.Drawing.Color.White;
             this.btnReports.Image = global::C969_LatoyaH.Properties.Resources.statistics_32;
             this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(0, 300);
+            this.btnReports.Location = new System.Drawing.Point(0, 375);
             this.btnReports.Name = "btnReports";
             this.btnReports.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.btnReports.Size = new System.Drawing.Size(161, 94);
@@ -98,7 +117,7 @@ namespace C969_LatoyaH
             this.btnAppt.ForeColor = System.Drawing.Color.White;
             this.btnAppt.Image = global::C969_LatoyaH.Properties.Resources.clipboard_8_32;
             this.btnAppt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAppt.Location = new System.Drawing.Point(0, 100);
+            this.btnAppt.Location = new System.Drawing.Point(0, 175);
             this.btnAppt.Name = "btnAppt";
             this.btnAppt.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.btnAppt.Size = new System.Drawing.Size(161, 94);
@@ -117,14 +136,13 @@ namespace C969_LatoyaH
             this.btnRecords.ForeColor = System.Drawing.Color.White;
             this.btnRecords.Image = global::C969_LatoyaH.Properties.Resources.database_32;
             this.btnRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRecords.Location = new System.Drawing.Point(0, 200);
+            this.btnRecords.Location = new System.Drawing.Point(0, 275);
             this.btnRecords.Name = "btnRecords";
             this.btnRecords.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.btnRecords.Size = new System.Drawing.Size(161, 94);
             this.btnRecords.TabIndex = 2;
             this.btnRecords.Text = "Records";
             this.btnRecords.UseVisualStyleBackColor = false;
-            this.btnRecords.Click += new System.EventHandler(this.btnRecords_Click);
             // 
             // panel2
             // 
@@ -281,10 +299,10 @@ namespace C969_LatoyaH
             this.lblCusName.TabIndex = 13;
             this.lblCusName.Text = "Name:";
             // 
-            // txtCusName
+            // txtCusAdd
             // 
             this.txtCusAdd.Location = new System.Drawing.Point(313, 447);
-            this.txtCusAdd.Name = "txtCusName";
+            this.txtCusAdd.Name = "txtCusAdd";
             this.txtCusAdd.Size = new System.Drawing.Size(345, 20);
             this.txtCusAdd.TabIndex = 14;
             // 
@@ -357,7 +375,6 @@ namespace C969_LatoyaH
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Name = "CustomerRecords";
-            this.Load += new System.EventHandler(this.CustomerRecords_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -395,5 +412,6 @@ namespace C969_LatoyaH
         private System.Windows.Forms.TextBox txtCusZip;
         private System.Windows.Forms.TextBox txtCusCountry;
         private System.Windows.Forms.TextBox txtCusPhone;
+        private System.Windows.Forms.Button btnMainForm;
     }
 }

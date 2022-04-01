@@ -10,23 +10,27 @@ using System.Windows.Forms;
 using System.Configuration;
 using MySql.Data;
 using MySql.Data.MySqlClient;
-using C969_LatoyaH.Db_formshelper;
 
 namespace C969_LatoyaH
 {
     public partial class CustomerRecords : Form
     {
-        public CustomerRecords()
+
+        public CustomerRecords(int userId)
         {
             InitializeComponent();
             GetTime();
+            ShowCustomers();
             
         }
 
-        private void CustomerRecords_Load(object sender, EventArgs e)
+       public void ShowCustomers()
         {
-            RecordsdataGridView1.DataSource = GetCustomerRecords();
-            
+            var custTable = DataContext.GetCustomers();
+            var custSource = new BindingSource();
+            custSource.DataSource = custTable;
+            RecordsdataGridView1.DataSource = null;
+            RecordsdataGridView1.DataSource = custSource;
         }
         public static DataTable GetCustomerRecords()
         {
@@ -42,6 +46,8 @@ namespace C969_LatoyaH
                         con.Open();
                         MySqlDataReader rd = cmd.ExecuteReader();
                         dtCustomer.Load(rd);
+
+                    
                     }
                 }
                 return dtCustomer;
@@ -56,19 +62,61 @@ namespace C969_LatoyaH
 
         }
         
+        //public static int AddCust(string customerName, int addressId, string user)
+        //{
+        //    try
+        //    {
+        //        DateTime currentTm = DateTime.Now;
+        //        var addingCust = new Customer(customerName, addressId, 1, currentTm, user, currentTm, user);
+        //        string sql = "server = localhost; port=3306; username = sqlUser; password=Passw0rd!; database = client_schedule";
+        //        MySqlConnection con = new MySqlConnection(sql);
+        //        MySqlDataAdapter sda = new MySqlDataAdapter($"insert into 'customer' values ({addingCust.CustomerId}, '{addingCust.CustomerName}', " +
+        //            $"" + $"{addingCust.AddressId}, {addingCust.Active},{addingCust.CreateDate},{addingCust.CreatedBy},{addingCust.LastUpdate}," +
+        //            $"{addingCust.LastUpdateBy}", con);
+        //        DataTable dt = new DataTable();
+        //        sda.Fill(dt);
+
+        //        CustomerRecords.AllCustomers.Add(addingCust);
+        //        return addingCust.CustomerId;
+
+        //    }
+        //    catch (MySqlException ex)
+        //    {
+        //        MessageBox.Show("MySql Connection\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        //    }
+        //}
 
         private void btnRcAdd_Click(object sender, EventArgs e)
         {
-            string customerName = txtCusAdd.Text;
-            string address1 = txtCusAdd.Text;
-            string address2 = txtCusAdd2.Text;
-            string postalCode = txtCusZip.Text;
-            string phone = txtCusPhone.Text;
-            string city = txtCusCity.Text;
-            string country = txtCusCountry.Text;
-            int customerId, addressId;
 
-            customerId = DatabaseHelpers.AddNewCustomer(customerName, addressId, user);
+            ToolTip ttip = new ToolTip();
+
+            if (string.IsNullOrWhiteSpace(custNmFd.Text))
+            {
+                ttip.Show("Customer name is required ", custNmFd);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(cstAdFd.Text))
+            {
+                ttip.Show("Address is required", cstAdFd);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(custCtFd.Text))
+            {
+                ttip.Show("City is required ", custCtFd);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(cstCountryFd.Text))
+            {
+                ttip.Show("Country is required", cstCountryFd);
+                return;
+            }
+
+            else
+            {
+
+            }
 
         }
 
@@ -88,23 +136,32 @@ namespace C969_LatoyaH
         /// <param name="e"></param>
         private void btnAppt_Click(object sender, EventArgs e)
         {
+            int currentUser = User.UserId;
+            this.Hide();
             Schedule schedule = new Schedule();
             schedule.ShowDialog();
             this.Close();
         }
 
-        private void btnRecords_Click(object sender, EventArgs e)
-        {
-            CustomerRecords custRecords = new CustomerRecords();
-            custRecords.ShowDialog();
-            this.Close();
-        }
-
         private void btnReports_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Reports report = new Reports();
             report.ShowDialog();
             this.Close();
         }
+
+        //private void RecordsdataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    getApptDb();
+        //}
+        //public void getApptDb()
+        //{
+        //    string apptCommunication = $"Select appointment.appointmentId, customer.customerName, customer.customerId, appointment.title," +
+        //        $"appointment.descrption, appointment.location,appointment.contact, appointment.start, appointment.end, appointment.type," +
+        //        $"appointment.url FROM appointment Inner Join customer on appointment.customerId = customer.customerId Inner Join 'user' on " +
+        //        $"appoinment.userId = 'user'.userId Where customer.customerId = '{RecordsdataGridView1.CurrentRow.Cells[0].Value}'";
+
+        //}
     }
 }

@@ -103,6 +103,16 @@ namespace C969_LatoyaH.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap house_32 {
+            get {
+                object obj = ResourceManager.GetObject("house-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pexels_francesco_ungaro_281260 {
             get {
                 object obj = ResourceManager.GetObject("pexels-francesco-ungaro-281260", resourceCulture);

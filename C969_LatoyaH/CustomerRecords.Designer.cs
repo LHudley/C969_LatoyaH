@@ -49,7 +49,7 @@ namespace C969_LatoyaH
             this.lblCusCountry = new System.Windows.Forms.Label();
             this.lblCusPhone = new System.Windows.Forms.Label();
             this.lblCusName = new System.Windows.Forms.Label();
-            this.txtCusAdd = new System.Windows.Forms.TextBox();
+            this.txtCusName = new System.Windows.Forms.TextBox();
             this.txtCusAdd1 = new System.Windows.Forms.TextBox();
             this.txtCusAdd2 = new System.Windows.Forms.TextBox();
             this.txtCusCity = new System.Windows.Forms.TextBox();
@@ -180,6 +180,7 @@ namespace C969_LatoyaH
             this.RecordsdataGridView1.RowHeadersVisible = false;
             this.RecordsdataGridView1.Size = new System.Drawing.Size(583, 284);
             this.RecordsdataGridView1.TabIndex = 2;
+            this.RecordsdataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RecordsdataGridView1_CellContentClick);
             // 
             // btnRcAdd
             // 
@@ -299,12 +300,12 @@ namespace C969_LatoyaH
             this.lblCusName.TabIndex = 13;
             this.lblCusName.Text = "Name:";
             // 
-            // txtCusAdd
+            // txtCusName
             // 
-            this.txtCusAdd.Location = new System.Drawing.Point(313, 447);
-            this.txtCusAdd.Name = "txtCusAdd";
-            this.txtCusAdd.Size = new System.Drawing.Size(345, 20);
-            this.txtCusAdd.TabIndex = 14;
+            this.txtCusName.Location = new System.Drawing.Point(313, 447);
+            this.txtCusName.Name = "txtCusName";
+            this.txtCusName.Size = new System.Drawing.Size(345, 20);
+            this.txtCusName.TabIndex = 14;
             // 
             // txtCusAdd1
             // 
@@ -359,7 +360,7 @@ namespace C969_LatoyaH
             this.Controls.Add(this.txtCusCity);
             this.Controls.Add(this.txtCusAdd2);
             this.Controls.Add(this.txtCusAdd1);
-            this.Controls.Add(this.txtCusAdd);
+            this.Controls.Add(this.txtCusName);
             this.Controls.Add(this.lblCusName);
             this.Controls.Add(this.lblCusPhone);
             this.Controls.Add(this.lblCusCountry);
@@ -405,7 +406,7 @@ namespace C969_LatoyaH
         private System.Windows.Forms.Label lblCusCountry;
         private System.Windows.Forms.Label lblCusPhone;
         private System.Windows.Forms.Label lblCusName;
-        private System.Windows.Forms.TextBox txtCusAdd;
+        private System.Windows.Forms.TextBox txtCusName;
         private System.Windows.Forms.TextBox txtCusAdd1;
         private System.Windows.Forms.TextBox txtCusAdd2;
         private System.Windows.Forms.TextBox txtCusCity;

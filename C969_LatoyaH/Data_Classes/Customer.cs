@@ -53,5 +53,9 @@ namespace C969_LatoyaH
             this.currentTm2 = currentTm2;
             this.user2 = user2;
         }
+
+        public Customer()
+        {
+        }
     }
 }

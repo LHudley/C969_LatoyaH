@@ -64,6 +64,12 @@ namespace C969_LatoyaH
             Disconnect();
             return customerId;
         }
+
+        internal static void Login(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public static DataTable GetCustomers()
         {
             DataTable custTable = new DataTable();
@@ -122,6 +128,17 @@ namespace C969_LatoyaH
             }
 
         }
+
+        internal static void AddaCountry(Country country)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static string GettheCountry(string countryName)
+        {
+            throw new NotImplementedException();
+        }
+
         public static void UpdateaCustomer(Customer customer)
         {
             int customerId = customer.CustomerId;
@@ -146,6 +163,28 @@ namespace C969_LatoyaH
             }
             Disconnect();
         }
+
+        internal static void AddAddress(Address address)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static void ActivityLogs(string userName, string v)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static string GetaAddress(string customerAddress)
+        {
+            throw new NotImplementedException();
+        }
+
+       
+        internal static string GettheCity(string cityName)
+        {
+            throw new NotImplementedException();
+        }
+
         public static void DeleteaCustomer(int customerId)
         {
             try
@@ -156,10 +195,21 @@ namespace C969_LatoyaH
                 Console.WriteLine(comm.CommandText);
                 comm.ExecuteNonQuery();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine("There was an issue deleting customer: " + ex);
             }
+            Disconnect();
+        }
+
+        internal static void EditaCustomer(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static void AddCity(City city)
+        {
+            throw new NotImplementedException();
         }
     }
 }

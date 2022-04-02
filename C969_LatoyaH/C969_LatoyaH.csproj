@@ -89,7 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataContext.cs" />
+    <Compile Include="Database\DataContext.cs" />
     <Compile Include="Data_Classes\Address.cs" />
     <Compile Include="Data_Classes\Appointment.cs" />
     <Compile Include="Data_Classes\City.cs" />

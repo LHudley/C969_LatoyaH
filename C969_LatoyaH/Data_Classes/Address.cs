@@ -42,5 +42,8 @@ namespace C969_LatoyaH
             }
         }
 
+        public Address()
+        {
+        }
     }
 }

@@ -33,5 +33,9 @@ namespace C969_LatoyaH
                 count++;
             }
         }
+
+        public Country()
+        {
+        }
     }
 }

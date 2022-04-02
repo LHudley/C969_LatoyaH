@@ -6,31 +6,44 @@ using System.Threading.Tasks;
 
 namespace C969_LatoyaH
 {
-    public class User
+    public static class User
     {
-       
-            public static  int UserId { get; set; }
+
+        private static int userId;
+        private static string username;
+        private static string password;
+        private static byte active;
+        private static DateTime createDate;
+        private static string createdBy;
+        private static DateTime lastUpdate;
+        private static string lastUpdateBy;
+
+        public static  int UserId { get; set; }
             public static string UserName { get; set; }
             public static string Password { get; set; }
-            public static string CreatedBy { get; set; }
-            public static string LastUpdateBy { get; set; }
-            public static DateTime CreateDate { get; set; }
-            public static DateTime LastUpdate { get; set; }
             public static byte Active { get; set; }
+            public static DateTime CreateDate { get; set; }
+            public static string CreatedBy { get; set; }
+            public static DateTime LastUpdate { get; set; }
+            public static string LastUpdateBy { get; set; }
+            
+           
+            
             
       
-            public User(int userId, string username, string password, string createdBy, string lastUpdateBy, DateTime createDate, DateTime lastUpdate, int active)
-            {
-                UserId = userId;
-                UserName = username;
-                Password = password;
-                CreatedBy = createdBy;
-                LastUpdateBy = lastUpdateBy;
-                CreateDate = createDate;
-                LastUpdate = lastUpdate;
-                Active = (byte)active;
-            }
+            //public User(int userId, string username, string password, int active, DateTime createDate, string createdBy,  DateTime lastUpdate, string lastUpdateBy)
+            //{
+            //    UserId = userId;
+            //    UserName = username;
+            //    Password = password;
+            //    Active = (byte)active; 
+            //    CreateDate = createDate;
+            //    CreatedBy = createdBy;
+            //    LastUpdate = lastUpdate;
+            //    LastUpdateBy = lastUpdateBy;
+                
+              
+            //}
 
-        //static public List<User> Users = new List<User>();
     }
 }

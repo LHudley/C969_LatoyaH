@@ -62,6 +62,7 @@ namespace C969_LatoyaH
         {
             string username = textUsername.Text;
             string password = textPassword.Text;
+            DataContext.Login(username, password);
             
 
             if (textUsername.Text.Trim().Length < 1)
@@ -74,21 +75,20 @@ namespace C969_LatoyaH
                 MessageBox.Show("Password is empty");
             }
 
-            try
-            {
-                string sql = "server = localhost; port=3306; username = sqlUser; password=Passw0rd!; database = client_schedule";
-                MySqlConnection con = new MySqlConnection(sql);
-                MySqlDataAdapter sda = new MySqlDataAdapter("select count(*) from user where username= '" + textUsername.Text + "' and password='" + textPassword.Text + "'", con);
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
+            var curUser = User.UserId;
 
-                if (dt.Rows[0][0].ToString()== "1")
+            try
+              {
+
+                if (curUser != 0)
                 {
+
                     MessageBox.Show(loginSuccess, "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+
                     this.Hide();
 
-                    CustomerRecords custRecords = new CustomerRecords();
+                    CustomerRecords custRecords = new CustomerRecords(curUser);
+                    DataContext.ActivityLogs(User.UserName, " is logged in");
                     custRecords.ShowDialog();
                     this.Close();
                 }
@@ -96,7 +96,28 @@ namespace C969_LatoyaH
                 {
                     MessageBox.Show(loginError, "alter", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
+            
+                //    string sql = "server = localhost; port=3306; username = sqlUser; password=Passw0rd!; database = client_schedule";
+                //    MySqlConnection con = new MySqlConnection(sql);
+                //    MySqlDataAdapter sda = new MySqlDataAdapter("select count(*) from user where username= '" + textUsername.Text + "' and password='" + textPassword.Text + "'", con);
+                //    DataTable dt = new DataTable();
+                //    sda.Fill(dt);
+
+                //    if (dt.Rows[0][0].ToString()== "1")
+                //    {
+                //        MessageBox.Show(loginSuccess, "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //        this.Hide();
+
+                //        CustomerRecords custRecords = new CustomerRecords();
+                //        custRecords.ShowDialog();
+                //        this.Close();
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show(loginError, "alter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    }
+
             }
             catch (MySqlException ex)
             {

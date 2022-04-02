@@ -36,5 +36,9 @@ namespace C969_LatoyaH
             }
 
         }
+
+        public City()
+        {
+        }
     }
 }

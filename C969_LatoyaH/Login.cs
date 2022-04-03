@@ -78,7 +78,7 @@ namespace C969_LatoyaH
             var curUser = User.UserId;
 
             try
-              {
+            {
 
                 if (curUser != 0)
                 {
@@ -96,27 +96,27 @@ namespace C969_LatoyaH
                 {
                     MessageBox.Show(loginError, "alter", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            
-                //    string sql = "server = localhost; port=3306; username = sqlUser; password=Passw0rd!; database = client_schedule";
-                //    MySqlConnection con = new MySqlConnection(sql);
-                //    MySqlDataAdapter sda = new MySqlDataAdapter("select count(*) from user where username= '" + textUsername.Text + "' and password='" + textPassword.Text + "'", con);
-                //    DataTable dt = new DataTable();
-                //    sda.Fill(dt);
 
-                //    if (dt.Rows[0][0].ToString()== "1")
-                //    {
-                //        MessageBox.Show(loginSuccess, "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //string sql = "server = localhost; port=3306; username = sqlUser; password=Passw0rd!; database = client_schedule";
+                //MySqlConnection con = new MySqlConnection(sql);
+                //MySqlDataAdapter sda = new MySqlDataAdapter("select count(*) from user where username= '" + textUsername.Text + "' and password='" + textPassword.Text + "'", con);
+                //DataTable dt = new DataTable();
+                //sda.Fill(dt);
 
-                //        this.Hide();
+                //if (dt.Rows[0][0].ToString() == "1")
+                //{
+                //    MessageBox.Show(loginSuccess, "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                //        CustomerRecords custRecords = new CustomerRecords();
-                //        custRecords.ShowDialog();
-                //        this.Close();
-                //    }
-                //    else
-                //    {
-                //        MessageBox.Show(loginError, "alter", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    }
+                //    this.Hide();
+
+                //    CustomerRecords custRecords = new CustomerRecords(curUser);
+                //    custRecords.ShowDialog();
+                //    this.Close();
+                //}
+                //else
+                //{
+                //    MessageBox.Show(loginError, "alter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
 
             }
             catch (MySqlException ex)
@@ -126,7 +126,7 @@ namespace C969_LatoyaH
             }
 
 
-        }
+}
 
       
         private void btnClear_Click(object sender, EventArgs e)

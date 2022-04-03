@@ -18,7 +18,7 @@ namespace C969_LatoyaH
         public DateTime LastUpdate { get; set; }
 
         public static int count = 0;
-        private int v;
+        //private int v;
         private DateTime currentTm1;
         private string user1;
         private DateTime currentTm2;
@@ -47,7 +47,7 @@ namespace C969_LatoyaH
         {
             CustomerName = customerName;
             AddressId = addressId;
-            this.v = v;
+            //this.v = v;
             this.currentTm1 = currentTm1;
             this.user1 = user1;
             this.currentTm2 = currentTm2;

@@ -241,7 +241,7 @@ namespace C969_LatoyaH
                 customer.CustomerId = int.Parse((string)customerId);
                 customer.CustomerName = txtCusName.Text;
                 customer.AddressId = addressId;
-                DataContext.EditaCustomer(customer);
+                DataContext.UpdateaCustomer(customer);
 
                 DataContext.ActivityLogs(User.UserName, "Updated a customer " + customer.CustomerName);
 

@@ -26,24 +26,24 @@ namespace C969_LatoyaH
             public static string CreatedBy { get; set; }
             public static DateTime LastUpdate { get; set; }
             public static string LastUpdateBy { get; set; }
-            
-           
-            
-            
-      
-            //public User(int userId, string username, string password, int active, DateTime createDate, string createdBy,  DateTime lastUpdate, string lastUpdateBy)
-            //{
-            //    UserId = userId;
-            //    UserName = username;
-            //    Password = password;
-            //    Active = (byte)active; 
-            //    CreateDate = createDate;
-            //    CreatedBy = createdBy;
-            //    LastUpdate = lastUpdate;
-            //    LastUpdateBy = lastUpdateBy;
-                
-              
-            //}
+
+
+
+
+
+        //public User(int userId, string username, string password, int active, DateTime createDate, string createdBy, DateTime lastUpdate, string lastUpdateBy)
+        //{
+        //    UserId = userId;
+        //    UserName = username;
+        //    Password = password;
+        //    Active = (byte)active;
+        //    CreateDate = createDate;
+        //    CreatedBy = createdBy;
+        //    LastUpdate = lastUpdate;
+        //    LastUpdateBy = lastUpdateBy;
+
+
+        //}
 
     }
 }

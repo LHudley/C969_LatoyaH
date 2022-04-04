@@ -272,7 +272,7 @@ namespace C969_LatoyaH
         {
             int currentUser = User.UserId;
             this.Hide();
-            Schedule schedule = new Schedule();
+            Appointments schedule = new Appointments();
             schedule.ShowDialog();
             this.Close();
         }

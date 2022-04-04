@@ -14,6 +14,11 @@ namespace C969_LatoyaH
         private const string connString = "server = localhost; port=3306; username = sqlUser; password=Passw0rd!; database = client_schedule";       
         private static MySqlConnection mysqlcon = new MySqlConnection(connString);
 
+        internal static object GetaUser()
+        {
+            throw new NotImplementedException();
+        }
+
         public static void Connect()
         {
             if(mysqlcon.State != System.Data.ConnectionState.Open)
@@ -30,6 +35,8 @@ namespace C969_LatoyaH
             }
             return;
         }
+
+        
 
         public static void Login(string username, string password)
         {
@@ -78,6 +85,117 @@ namespace C969_LatoyaH
             return;
 
         }
+        public static List<string> GetMonthlyAppt(int userId, int month)
+        {
+            List<string> apptTpLst = new List<string>();
+            try
+            {
+                Connect();
+                var gettAptTyp = "select type, count(type) from appointment where userId = '" + userId + "' and month(start) = '" + month + "';";
+                MySqlCommand comm = new MySqlCommand(gettAptTyp, mysqlcon);
+                MySqlDataReader reader = comm.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string typeCt = reader["type"].ToString() + ":" + reader["count(type)"].ToString();
+                    apptTpLst.Add(typeCt);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There was an error gettig an appointment" + ex);
+            }
+            Disconnect();
+            return apptTpLst;
+        }
+
+        public static List<string> GetApptCtCustomer()
+        {
+            List<string> apptCustLst = new List<string>();
+            try
+            {
+                Connect();
+                var gettAptCust = "select customer.customerName as customer, count(appointment.appointmentId) as count from appointment join customer on appointment.customerId = customer.customerId group by customer.customerName;";
+                MySqlCommand comm = new MySqlCommand(gettAptCust, mysqlcon);
+                MySqlDataReader reader = comm.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string customer = reader["customer"].ToString() + ":" + reader["count"].ToString();
+                    apptCustLst.Add(customer);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There was an error gettig an appointment" + ex);
+            }
+            Disconnect();
+            return apptCustLst;
+        }
+
+        public static List<Appointments> GetUserAppt(int userId)
+        {
+            List<Appointment> aptss = new List<Appointment>();
+            try
+            {
+
+                Connect();
+                var gettAptTyp = "select title, start, end from appointment where userId = '" + userId + "';";
+                MySqlCommand comm = new MySqlCommand(gettAptTyp, mysqlcon);
+                MySqlDataReader reader = comm.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    aptss.Add(new Appointment()
+                    {
+
+                        Title = reader["title"].ToString(),
+                        Start = Convert.ToDateTime(reader["start"]).ToLocalTime(),
+                        End = Convert.ToDateTime(reader["end"]).ToLocalTime()
+                    });
+                   
+                   
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("There was an error gettig a user appointment" + ex);
+            }
+            Disconnect();
+            return aptss;
+        }
+
+        public static string GetaUserId(string userName)
+        {
+            string userId = "0";
+
+            try
+            {
+                Connect();
+                var gttUser = "select userId from user where userName = '" + userName + "';";
+                MySqlCommand comm = new MySqlCommand(gttUser, mysqlcon);
+                MySqlDataReader reader = comm.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        userId = reader["userId"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There was an error getting user Id: ", ex);
+            }
+            Disconnect();
+            return userId;
+        }
+
         public static string GetaCustomer(string name)
         {
             string customerId = null;
@@ -85,7 +203,7 @@ namespace C969_LatoyaH
             try
             {
                 Connect();
-                var customerSelection = "Select customerId from custoer where customerName = '" + name + "';";
+                var customerSelection = "Select customerId from customer where customerName = '" + name + "';";
 
                 MySqlCommand comm = new MySqlCommand(customerSelection, mysqlcon);
                 MySqlDataReader reader = comm.ExecuteReader();

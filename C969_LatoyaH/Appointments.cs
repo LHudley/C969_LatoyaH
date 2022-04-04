@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace C969_LatoyaH
 {
-    public partial class Schedule : Form
+    public partial class Appointments : Form
     {
-        public Schedule()
+        public Appointments(int userId)
         {
             InitializeComponent();
         }

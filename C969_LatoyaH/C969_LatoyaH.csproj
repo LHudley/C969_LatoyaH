@@ -101,11 +101,11 @@
     <Compile Include="Reports.Designer.cs">
       <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
-    <Compile Include="Schedule.cs">
+    <Compile Include="Appointments.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Schedule.Designer.cs">
-      <DependentUpon>Schedule.cs</DependentUpon>
+    <Compile Include="Appointments.Designer.cs">
+      <DependentUpon>Appointments.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomerRecords.cs">
       <SubType>Form</SubType>
@@ -125,8 +125,8 @@
     <EmbeddedResource Include="Reports.resx">
       <DependentUpon>Reports.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Schedule.resx">
-      <DependentUpon>Schedule.cs</DependentUpon>
+    <EmbeddedResource Include="Appointments.resx">
+      <DependentUpon>Appointments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomerRecords.resx">
       <DependentUpon>CustomerRecords.cs</DependentUpon>

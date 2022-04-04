@@ -14,19 +14,15 @@ namespace C969_LatoyaH
         private const string connString = "server = localhost; port=3306; username = sqlUser; password=Passw0rd!; database = client_schedule";       
         private static MySqlConnection mysqlcon = new MySqlConnection(connString);
 
-        internal static object GetaUser()
-        {
-            throw new NotImplementedException();
-        }
-
         public static void Connect()
         {
-            if(mysqlcon.State != System.Data.ConnectionState.Open)
+            if (mysqlcon.State != System.Data.ConnectionState.Open)
             {
                 mysqlcon.Open();
             }
             return;
         }
+
         public static void Disconnect()
         {
             if (mysqlcon.State != System.Data.ConnectionState.Closed)
@@ -85,6 +81,33 @@ namespace C969_LatoyaH
             return;
 
         }
+        internal static object GetaUser()
+        {
+            throw new NotImplementedException();
+        }
+
+       
+
+        internal static object GtAptDy(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static object GtAptByWk(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static object GtAptByMth(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static bool AlertAferFifteenMin(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
         public static List<string> GetMonthlyAppt(int userId, int month)
         {
             List<string> apptTpLst = new List<string>();
@@ -108,6 +131,11 @@ namespace C969_LatoyaH
             }
             Disconnect();
             return apptTpLst;
+        }
+
+        internal static bool ApptOverlapping(int userId, DateTime start, DateTime end)
+        {
+            throw new NotImplementedException();
         }
 
         public static List<string> GetApptCtCustomer()
@@ -135,7 +163,12 @@ namespace C969_LatoyaH
             return apptCustLst;
         }
 
-        public static List<Appointments> GetUserAppt(int userId)
+        internal static void GetaAppointment(Appointment appt)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static List<Appointment> GetUserAppt(int userId)
         {
             List<Appointment> aptss = new List<Appointment>();
             try
@@ -226,7 +259,11 @@ namespace C969_LatoyaH
             return customerId;
         }
 
-       
+        internal static void EditaAppointment(Appointment appt)
+        {
+            throw new NotImplementedException();
+        }
+
         public static DataTable GetCustomers()
         {
             DataTable custTable = new DataTable();
@@ -289,6 +326,12 @@ namespace C969_LatoyaH
             Disconnect();
             return custTable;
         }
+
+        internal static void DeleteAppt(int gtApptId)
+        {
+            
+        }
+
         public static void AddaCustomer(Customer customer)
         {
             string customerName = customer.CustomerName;

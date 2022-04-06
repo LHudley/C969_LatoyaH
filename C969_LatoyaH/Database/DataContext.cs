@@ -1,18 +1,23 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace C969_LatoyaH
 {
     public static class DataContext
     {
-        private const string connString = "server = localhost; port=3306; username = sqlUser; password=Passw0rd!; database = client_schedule";       
+        public const string connString = "server = localhost; port=3306; username = sqlUser; password=Passw0rd!; database = client_schedule";       
         private static MySqlConnection mysqlcon = new MySqlConnection(connString);
+        private static Dictionary<int, Hashtable> app = new Dictionary<int, Hashtable>();
+        private static int userId;
+        private static string userName;
 
         public static void Connect()
         {
@@ -81,31 +86,282 @@ namespace C969_LatoyaH
             return;
 
         }
-        internal static object GetaUser()
+
+        public static List<KeyValuePair<string, object>> apSearch(int id)
         {
-            throw new NotImplementedException();
+            var list = new List<KeyValuePair<string, object>>();
+            Connect();
+            var query = $"select * from appointment where appointmentId = {id}";
+            MySqlCommand comm = new MySqlCommand(query, mysqlcon);
+            MySqlDataReader reader = comm.ExecuteReader();
+            try
+            {
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    list.Add(new KeyValuePair<string, object>("appointmentId", reader[0]));
+                    list.Add(new KeyValuePair<string, object>("customerId", reader[1]));
+                    list.Add(new KeyValuePair<string, object>("title", reader[3]));
+                    list.Add(new KeyValuePair<string, object>("location", reader[5]));
+                    list.Add(new KeyValuePair<string, object>("type", reader[7]));
+                    list.Add(new KeyValuePair<string, object>("start", reader[9]));
+                    list.Add(new KeyValuePair<string, object>("end", reader[10]));
+                    reader.Close();
+
+                }
+                else
+                {
+
+                    MessageBox.Show("There was no appointment found");
+                    return null;
+
+                }
+                return list;
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show("There was an error: " + ex);
+                return null;
+            }
+
+
         }
 
-       
-
-        internal static object GtAptDy(int userId)
+        public static int GetUserId()
         {
-            throw new NotImplementedException();
+            return userId;
         }
 
-        internal static object GtAptByWk(int userId)
+        public static DataTable GetaUser()
         {
-            throw new NotImplementedException();
+            DataTable usTble = new DataTable();
+            if (!usTble.Columns.Contains("Id")) 
+            { 
+                usTble.Columns.Add("Id", typeof(string));
+            }
+            if (!usTble.Columns.Contains("UserName")) 
+            {
+                usTble.Columns.Add("UserName", typeof(string)); 
+            }
+
+            try
+            {
+                Connect();
+                var getUsr = "select * from user;";
+                MySqlCommand comm = new MySqlCommand(getUsr, mysqlcon);
+                MySqlDataReader reader = comm.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        usTble.Rows.Add(reader["userId"], reader["userName"]);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("There was an issue getting a user: " + ex);
+            }
+            Disconnect();
+            return usTble;
+
+
         }
 
-        internal static object GtAptByMth(int userId)
+        public static string tzConv(string dateTime)
         {
-            throw new NotImplementedException();
+            DateTime utcDtTm = DateTime.Parse(dateTime.ToString());
+            DateTime localDtTm = utcDtTm.ToLocalTime();
+            return localDtTm.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
-        internal static bool AlertAferFifteenMin(int userId)
+        public static void SetApp(Dictionary<int, Hashtable> appts)
         {
-            throw new NotImplementedException();
+            app = appts;
+        }
+
+        public static DataTable GtAptDy(int userId)
+        {
+            DataTable apptTbl = new DataTable();
+
+            if (!apptTbl.Columns.Contains("Id"))
+            {
+                apptTbl.Columns.Add("Id", typeof(string));
+            }
+            if (!apptTbl.Columns.Contains("Title"))
+            {
+                apptTbl.Columns.Add("Title", typeof(string));
+            }
+            if (!apptTbl.Columns.Contains("Customer"))
+            {
+                apptTbl.Columns.Add("Customer", typeof(string));
+            }
+            if (!apptTbl.Columns.Contains("Type"))
+            {
+                apptTbl.Columns.Add("Type", typeof(string));
+            }
+            if (!apptTbl.Columns.Contains("Start"))
+            {
+                apptTbl.Columns.Add("Start", typeof(string));
+            }
+            if (!apptTbl.Columns.Contains("End"))
+            {
+                apptTbl.Columns.Add("End", typeof(string));
+            }
+
+
+            try
+            {
+                Connect();
+                var getApptt = "select appointment.appointmentId, appointment.title, customer.customerName, appointment.type, appointment.start, appointment.end from appointment join customer on appointment.customerId = customer.customerId where userId ='" + userId + "' and date(start) = utc_date()";
+                MySqlCommand comm = new MySqlCommand(getApptt, mysqlcon);
+                Console.WriteLine(comm.CommandText);
+                MySqlDataReader reader = comm.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        apptTbl.Rows.Add(reader["appointmentId"], reader["title"], reader["customerName"], reader["type"], Convert.ToDateTime(reader["start"]).ToLocalTime(), Convert.ToDateTime(reader["end"]).ToLocalTime());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There was an issue getting appointments: " + ex);
+            }
+            Disconnect();
+            return apptTbl;
+        }
+
+        public static DataTable GtAptByWk(int userId)
+        {
+            DataTable apptTbl = new DataTable();
+           
+            if (!apptTbl.Columns.Contains("Id"))
+            {
+                apptTbl.Columns.Add("Id", typeof(string));
+            }
+            if (!apptTbl.Columns.Contains("Title"))
+            {
+                apptTbl.Columns.Add("Title", typeof(string));
+            }
+            if (!apptTbl.Columns.Contains("Customer"))
+            {
+                apptTbl.Columns.Add("Customer", typeof(string));
+            }
+            if (!apptTbl.Columns.Contains("Type"))
+            {
+                apptTbl.Columns.Add("Type", typeof(string));
+            }
+            if (!apptTbl.Columns.Contains("Start"))
+            {
+                apptTbl.Columns.Add("Start", typeof(string));
+            }
+            if (!apptTbl.Columns.Contains("End"))
+            {
+                apptTbl.Columns.Add("End", typeof(string));
+            }
+
+
+            try
+            {
+                Connect();
+                var getApptt = "select appointment.appointmentId, appointment.title, customer.customerName, appointment.type, appointment.start, appointment.end from appointment join customer on appointment.customerId = customer.customerId where userId ='" + userId + "' and yearweek(start) = yearweek(current_date)";
+                MySqlCommand comm = new MySqlCommand(getApptt, mysqlcon);
+                Console.WriteLine(comm.CommandText);
+                MySqlDataReader reader = comm.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        apptTbl.Rows.Add(reader["appointmentId"], reader["title"], reader["customerName"], reader["type"], Convert.ToDateTime(reader["start"]).ToLocalTime(), Convert.ToDateTime(reader["end"]).ToLocalTime());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There was an issue getting weekly appointments: " + ex);
+            }
+            Disconnect();
+            return apptTbl;
+        }
+
+        public static DataTable GtAptByMth(int userId)
+        {
+            DataTable apptTbl = new DataTable();
+            int month = DateTime.Now.Month;
+            int year = DateTime.Now.Year;
+
+            if (!apptTbl.Columns.Contains("Id"))
+            {
+                apptTbl.Columns.Add("Id", typeof(string));
+            }
+            if (!apptTbl.Columns.Contains("Title"))
+            {
+                apptTbl.Columns.Add("Title", typeof(string));
+            }
+            if (!apptTbl.Columns.Contains("Customer"))
+            {
+                apptTbl.Columns.Add("Customer", typeof(string));
+            }
+            if (!apptTbl.Columns.Contains("Type"))
+            {
+                apptTbl.Columns.Add("Type", typeof(string));
+            }
+            if (!apptTbl.Columns.Contains("Start"))
+            {
+                apptTbl.Columns.Add("Start", typeof(string));
+            }
+            if (!apptTbl.Columns.Contains("End"))
+            {
+                apptTbl.Columns.Add("End", typeof(string));
+            }
+
+
+            try
+            {
+                Connect();
+                var getApptt = "select appointment.appointmentId, appointment.title, customer.customerName, appointment.type, appointment.start, appointment.end from appointment join customer on appointment.customerId = customer.customerId where userId = '" + userId + "' and month(start) = " + month + " and year(start) = '"+year+";" ;
+                MySqlCommand comm = new MySqlCommand(getApptt, mysqlcon);
+                Console.WriteLine(comm.CommandText);
+                MySqlDataReader reader = comm.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        apptTbl.Rows.Add(reader["appointmentId"], reader["title"], reader["customerName"], reader["type"], Convert.ToDateTime(reader["start"]).ToLocalTime(), Convert.ToDateTime(reader["end"]).ToLocalTime());
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("There was an issue getting monthly appointments: " + ex);
+            }
+            Disconnect();
+            return apptTbl;
+
+        }
+
+        public static bool AlertAferFifteenMin(int userId)
+        {
+            try
+            {
+                Connect();
+                var getAptt = "select appointment.appointmentId,appointment.title,appointment.type, customer.customerName,appointment.start,appointment.end from appointment join customer on appointment.customerId = customer.customerId where userId = '" + userId + "' and start between utc_timestamp() and (utc_timestamp()+ interval 15 minute);";
+                MySqlCommand comm = new MySqlCommand(getAptt, mysqlcon);
+                MySqlDataReader reader = comm.ExecuteReader();
+                if (reader.HasRows) { reader.Close();return true; }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("There was an error geting alert for fifteen minute appointments: " + ex);
+            }
+            Disconnect();
+            return false;
         }
 
         public static List<string> GetMonthlyAppt(int userId, int month)
@@ -127,15 +383,31 @@ namespace C969_LatoyaH
             }
             catch (Exception ex)
             {
-                Console.WriteLine("There was an error gettig an appointment" + ex);
+                Console.WriteLine("There was an error gettig an output monthly appointment" + ex);
             }
             Disconnect();
             return apptTpLst;
         }
 
-        internal static bool ApptOverlapping(int userId, DateTime start, DateTime end)
+        public static bool ApptOverlapping(int userId, DateTime start, DateTime end)
         {
-            throw new NotImplementedException();
+            string stTm = start.ToUniversalTime().ToString("yy-MM-dd HH:mm:ss");
+            string edTm = end.ToUniversalTime().ToString("yy-MM-dd HH:mm:ss");
+
+            try
+            {
+                Connect();
+                var getAptt = "select appointment.appointmentId,appointment.title,appointment.type, customer.customerName,appointment.start,appointment.end from appointment join customer on appointment.customerId = customer.customerId where start <= '" + edTm + "' and end >= '"+stTm+ "' and userId = '"+userId+"';";
+                MySqlCommand comm = new MySqlCommand(getAptt, mysqlcon);
+                MySqlDataReader reader = comm.ExecuteReader();
+                if (reader.HasRows) { reader.Close(); return true; }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There was an issue, please check overlapping appointments: " + ex);
+            }
+            Disconnect();
+            return false;
         }
 
         public static List<string> GetApptCtCustomer()
@@ -163,9 +435,34 @@ namespace C969_LatoyaH
             return apptCustLst;
         }
 
-        internal static void GetaAppointment(Appointment appt)
+        public static void GetaAppointment(Appointment appt)
         {
-            throw new NotImplementedException();
+            int customerId = appt.CustomerId;
+            int userId = User.UserId;
+            string title = appt.Title;
+            string description = appt.Description;
+            string location = appt.Location;
+            string contact = appt.Contact;
+            string type = appt.Type;
+            string url = appt.Url;
+            string start = appt.Start.ToUniversalTime().ToString("yy-MM-dd HH:mm:ss");
+            string end = appt.End.ToUniversalTime().ToString("yy-MM-dd HH:mm:ss");
+            string createDate = DateTime.Now.ToUniversalTime().ToString("yy-MM-dd HH:mm:ss");
+            string createdBy = User.UserName;
+            string lastUpdate = DateTime.Now.ToUniversalTime().ToString("yy-MM-dd HH:mm:ss");
+            string lastUpdateBy = User.UserName;
+            try
+            {
+                var adAppts = "insert into appointment(customerId, userId, title, description, location, contact, type, url, start,end,createDate,createdBy,lastUpdate,lastUpdateBy) values('" + customerId + "','" + userId + "', '" + title + "','" + description + "','" + location + "','" + contact + "','" + type + "','" + url + "','" + start + "','" + end + "','" + createDate + "','" + createdBy + "','" + lastUpdate + "','" + lastUpdateBy + "');";
+                MySqlCommand comm = new MySqlCommand(adAppts, mysqlcon);
+                Console.WriteLine(comm.CommandText);
+                comm.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There was an issue adding appointment: " + ex);
+            }
+            Disconnect();
         }
 
         public static List<Appointment> GetUserAppt(int userId)
@@ -259,9 +556,33 @@ namespace C969_LatoyaH
             return customerId;
         }
 
-        internal static void EditaAppointment(Appointment appt)
+        public static void EditaAppointment(Appointment appt)
         {
-            throw new NotImplementedException();
+            int appointmentId = appt.AppointmentId;
+            int customerId = appt.CustomerId;
+            int userId = User.UserId;
+            string title = appt.Title;
+            string description = appt.Description;
+            string location = appt.Location;
+            string contact = appt.Contact;
+            string type = appt.Type;
+            string url = appt.Url;
+            string start = appt.Start.ToUniversalTime().ToString("yy-MM-dd HH:mm:ss");
+            string end = appt.End.ToUniversalTime().ToString("yy-MM-dd HH:mm:ss");
+            string lastUpdate = DateTime.Now.ToUniversalTime().ToString("yy-MM-dd HH:mm:ss");
+            string lastUpdateBy = User.UserName;
+            try
+            {
+                var updateaptt = "update appointment set customerId = '" + customerId + "',userId = '" + userId + "',title ='" + title + "',description = '" + description + "',location = '" + location + "',contact = '" + contact + "',type = '" + type + "',url = '" + url + "',start = '" + start + "',end = '" + end + "',lastUpdate = '" + lastUpdate + "',lastUpdateBy = '" + lastUpdateBy + "' where appointmentId ='" + appointmentId + "';"; 
+                MySqlCommand comm = new MySqlCommand(updateaptt, mysqlcon);
+                Console.WriteLine(comm.CommandText);
+                comm.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There was an issue adding appointment: " + ex);
+            }
+            Disconnect();
         }
 
         public static DataTable GetCustomers()
@@ -327,9 +648,26 @@ namespace C969_LatoyaH
             return custTable;
         }
 
-        internal static void DeleteAppt(int gtApptId)
+        public static void DeleteAppt(IDictionary<string, object> dictionary)
         {
-            
+            try
+            {
+                Connect();
+                var dlAppt = $"delete from appointment where apointmentId = '{ dictionary["appointmentId"]}'";
+                MySqlCommand comm = new MySqlCommand(dlAppt, mysqlcon);
+                MySqlTransaction trans = mysqlcon.BeginTransaction();
+                comm.CommandText = dlAppt;
+                comm.Connection = mysqlcon;
+                comm.Transaction= trans;
+                comm.ExecuteNonQuery();
+                trans.Commit();
+                mysqlcon.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("There was an issue deleting appointment: " + ex);
+            }
+            Disconnect();
         }
 
         public static void AddaCustomer(Customer customer)
@@ -532,8 +870,6 @@ namespace C969_LatoyaH
             int cityId = address.CityId;
             string postalCode = address.PostalCode;
             string phone = address.Phone;
-            string createDate = DateTime.Now.ToUniversalTime().ToString("yy-MM-dd HH:mm:ss");
-            string createdBy = User.UserName;
             string lastUpdate = DateTime.Now.ToUniversalTime().ToString("yy-MM-dd HH:mm:ss");
             string lastUpdateBy = User.UserName;
 

@@ -30,6 +30,9 @@ namespace C969_LatoyaH
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnReports = new System.Windows.Forms.Button();
+            this.btnAppt = new System.Windows.Forms.Button();
+            this.btnRecords = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,9 +55,6 @@ namespace C969_LatoyaH
             this.txtCusZip = new System.Windows.Forms.TextBox();
             this.txtCusCountry = new System.Windows.Forms.TextBox();
             this.txtCusPhone = new System.Windows.Forms.TextBox();
-            this.btnReports = new System.Windows.Forms.Button();
-            this.btnAppt = new System.Windows.Forms.Button();
-            this.btnRecords = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsdataGridView1)).BeginInit();
@@ -71,6 +71,59 @@ namespace C969_LatoyaH
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(161, 679);
             this.panel1.TabIndex = 0;
+            // 
+            // btnReports
+            // 
+            this.btnReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReports.ForeColor = System.Drawing.Color.White;
+            this.btnReports.Image = global::C969_LatoyaH.Properties.Resources.statistics_32;
+            this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReports.Location = new System.Drawing.Point(0, 290);
+            this.btnReports.Name = "btnReports";
+            this.btnReports.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.btnReports.Size = new System.Drawing.Size(161, 94);
+            this.btnReports.TabIndex = 4;
+            this.btnReports.Text = "Reports";
+            this.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReports.UseVisualStyleBackColor = false;
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
+            // 
+            // btnAppt
+            // 
+            this.btnAppt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAppt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAppt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAppt.ForeColor = System.Drawing.Color.White;
+            this.btnAppt.Image = global::C969_LatoyaH.Properties.Resources.clipboard_8_32;
+            this.btnAppt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAppt.Location = new System.Drawing.Point(0, 176);
+            this.btnAppt.Name = "btnAppt";
+            this.btnAppt.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.btnAppt.Size = new System.Drawing.Size(161, 94);
+            this.btnAppt.TabIndex = 3;
+            this.btnAppt.Text = "Appointments";
+            this.btnAppt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAppt.UseVisualStyleBackColor = false;
+            this.btnAppt.Click += new System.EventHandler(this.btnAppt_Click);
+            // 
+            // btnRecords
+            // 
+            this.btnRecords.BackColor = System.Drawing.Color.Red;
+            this.btnRecords.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRecords.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecords.ForeColor = System.Drawing.Color.White;
+            this.btnRecords.Image = global::C969_LatoyaH.Properties.Resources.database_32;
+            this.btnRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRecords.Location = new System.Drawing.Point(0, 61);
+            this.btnRecords.Name = "btnRecords";
+            this.btnRecords.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.btnRecords.Size = new System.Drawing.Size(161, 94);
+            this.btnRecords.TabIndex = 2;
+            this.btnRecords.Text = "Records";
+            this.btnRecords.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -276,59 +329,6 @@ namespace C969_LatoyaH
             this.txtCusPhone.Name = "txtCusPhone";
             this.txtCusPhone.Size = new System.Drawing.Size(345, 20);
             this.txtCusPhone.TabIndex = 20;
-            // 
-            // btnReports
-            // 
-            this.btnReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReports.ForeColor = System.Drawing.Color.White;
-            this.btnReports.Image = global::C969_LatoyaH.Properties.Resources.statistics_32;
-            this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(0, 290);
-            this.btnReports.Name = "btnReports";
-            this.btnReports.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.btnReports.Size = new System.Drawing.Size(161, 94);
-            this.btnReports.TabIndex = 4;
-            this.btnReports.Text = "Reports";
-            this.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnReports.UseVisualStyleBackColor = false;
-            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
-            // 
-            // btnAppt
-            // 
-            this.btnAppt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnAppt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAppt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAppt.ForeColor = System.Drawing.Color.White;
-            this.btnAppt.Image = global::C969_LatoyaH.Properties.Resources.clipboard_8_32;
-            this.btnAppt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAppt.Location = new System.Drawing.Point(0, 75);
-            this.btnAppt.Name = "btnAppt";
-            this.btnAppt.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.btnAppt.Size = new System.Drawing.Size(161, 94);
-            this.btnAppt.TabIndex = 3;
-            this.btnAppt.Text = "Appointments";
-            this.btnAppt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAppt.UseVisualStyleBackColor = false;
-            this.btnAppt.Click += new System.EventHandler(this.btnAppt_Click);
-            // 
-            // btnRecords
-            // 
-            this.btnRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnRecords.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnRecords.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecords.ForeColor = System.Drawing.Color.White;
-            this.btnRecords.Image = global::C969_LatoyaH.Properties.Resources.database_32;
-            this.btnRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRecords.Location = new System.Drawing.Point(0, 184);
-            this.btnRecords.Name = "btnRecords";
-            this.btnRecords.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.btnRecords.Size = new System.Drawing.Size(161, 94);
-            this.btnRecords.TabIndex = 2;
-            this.btnRecords.Text = "Records";
-            this.btnRecords.UseVisualStyleBackColor = false;
             // 
             // CustomerRecords
             // 

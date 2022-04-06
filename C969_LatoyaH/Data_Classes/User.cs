@@ -31,19 +31,7 @@ namespace C969_LatoyaH
 
 
 
-        //public User(int userId, string username, string password, int active, DateTime createDate, string createdBy, DateTime lastUpdate, string lastUpdateBy)
-        //{
-        //    UserId = userId;
-        //    UserName = username;
-        //    Password = password;
-        //    Active = (byte)active;
-        //    CreateDate = createDate;
-        //    CreatedBy = createdBy;
-        //    LastUpdate = lastUpdate;
-        //    LastUpdateBy = lastUpdateBy;
-
-
-        //}
+        
 
     }
 }

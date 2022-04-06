@@ -48,12 +48,12 @@ namespace C969_LatoyaH
             var rpt = new StringBuilder();
             string user = comBxUser.Text;
             int userId = int.Parse(DataContext.GetaUserId(user));
-            List<Appointments> appoint = DataContext.GetUserAppt(userId);
+            List<Appointment> appoint = DataContext.GetUserAppt(userId);
 
             foreach ( var appoints in appoint)
             {
                 
-                rpt.AppendLine(appoints.Title + Environment.NewLine + "  "+ appoints.StartPosition + Environment.NewLine + "  " +appoints.End + Environment.NewLine);
+                rpt.AppendLine(appoints.Title + Environment.NewLine + "  "+ appoints.Start + Environment.NewLine + "  " +appoints.End + Environment.NewLine);
             }
             richTextBox1.Text = rpt.ToString();
         }
@@ -78,7 +78,7 @@ namespace C969_LatoyaH
         {
             int currentUser = User.UserId;
             this.Hide();
-            Appointments schedule = new Appointments(currentUser);
+            Appointments schedule = new Appointments();
             schedule.ShowDialog();
             this.Close();
 

@@ -89,11 +89,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityLogss.cs" />
     <Compile Include="AddAppointmentt.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddAppointmentt.Designer.cs">
       <DependentUpon>AddAppointmentt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="client_scheduleDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>client_scheduleDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Database\DataContext.cs" />
     <Compile Include="Data_Classes\Address.cs" />
@@ -101,11 +107,12 @@
     <Compile Include="Data_Classes\City.cs" />
     <Compile Include="Data_Classes\Country.cs" />
     <Compile Include="Data_Classes\Customer.cs" />
-    <Compile Include="DeleteAppointments.cs">
+    <Compile Include="LGOutlier.cs" />
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DeleteAppointments.Designer.cs">
-      <DependentUpon>DeleteAppointments.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports.cs">
       <SubType>Form</SubType>
@@ -134,17 +141,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data_Classes\User.cs" />
-    <Compile Include="UpdtAppointments.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UpdtAppointments.Designer.cs">
-      <DependentUpon>UpdtAppointments.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AddAppointmentt.resx">
       <DependentUpon>AddAppointmentt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DeleteAppointments.resx">
-      <DependentUpon>DeleteAppointments.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports.resx">
       <DependentUpon>Reports.cs</DependentUpon>
@@ -168,9 +169,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UpdtAppointments.resx">
-      <DependentUpon>UpdtAppointments.cs</DependentUpon>
-    </EmbeddedResource>
+    <None Include="client_scheduleDataSet.xsc">
+      <DependentUpon>client_scheduleDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="client_scheduleDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>client_scheduleDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="client_scheduleDataSet.xss">
+      <DependentUpon>client_scheduleDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

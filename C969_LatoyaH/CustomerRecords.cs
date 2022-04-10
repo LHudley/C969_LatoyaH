@@ -15,47 +15,63 @@ namespace C969_LatoyaH
 {
     public partial class CustomerRecords : Form
     {
+        private Form MainControl;
          
-        public CustomerRecords(int userId)
+        public CustomerRecords(Form main)
         {
             InitializeComponent();
+            RecordsdataGridView1.DataSource = MainForm.CustLt;
+            MainControl = main;
             GetTime();
-            ShowCustomers();
+            
             
         }
 
-      
-
-        public void ShowCustomers()
+        private void CustomerRecords_Load(object sender, EventArgs e)
         {
-            var custTable = DataContext.GetCustomers();
-            var custSource = new BindingSource();
-            custSource.DataSource = custTable;
-            RecordsdataGridView1.DataSource = null;
-            RecordsdataGridView1.DataSource = custSource;
+            Dictionary<int, string> countryDicNm = MainForm.countryDict.ToDictionary(dic => dic.Key, dic => dic.Value.CountryName);
+            comboBoxCountry.DataSource = new BindingSource(countryDicNm, null);
+            comboBoxCountry.DisplayMember = "Value";
+            comboBoxCountry.ValueMember = "Key";
+            comboBoxCountry.SelectedItem = null;
+            Dictionary<int, string> cityDicNm = MainForm.cityDict.ToDictionary(dic => dic.Key, dic => dic.Value.CityName);
+            comboBoxCountry.DataSource = new BindingSource(cityDicNm, null);
+            comboBoxCity.DisplayMember = "Value";
+            comboBoxCity.ValueMember = "Key";
+            comboBoxCity.SelectedItem = null;
         }
-        public static DataTable GetCustomerRecords()
+
+        private void emptyFields()
         {
-           
-                DataTable dtCustomer = new DataTable();          
-                string connRecords = ConfigurationManager.ConnectionStrings["C969_LatoyaH.Properties.Settings.client_scheduleConnectionString"].ConnectionString;               
-                using (MySqlConnection con = new MySqlConnection(connRecords))
-                {
-                    using (MySqlCommand cmd = new MySqlCommand("Select customer.customerId, customer.customerName, address.address, address.address2, " +
-                        "address.postalCode, address.phone,city.city,country.country from customer join address on customer.addressId=address.addressId" +
-                        " join city on address.cityId=city.cityId join country on city.countryId=country.countryId;", con))
-                    {
-                        con.Open();
-                        MySqlDataReader rd = cmd.ExecuteReader();
-                        dtCustomer.Load(rd);
+            txtId.Text = "";
+            txtCusAdd1.Text = "";
+            txtCusAdd2.Text = "";
+            txtCusName.Text = "";
+            txtCusPhone.Text = "";
+            txtCusZip.Text = "";
+            comboBoxCity.Text = "";
+            comboBoxCountry.Text = "";
+        }
+       
+        private void ActiveSect(bool active)
+        {
+            txtCusName.Enabled = active;
+            txtCusAdd1.Enabled = active;
 
-                    
-                    }
-                }
-                return dtCustomer;
-           
+            txtCusAdd2.Enabled = active;
+            comboBoxCity.Enabled = active;
+            txtCusZip.Enabled = active;
 
+            comboBoxCountry.Enabled = active;
 
+            txtCusPhone.Enabled = active;
+            btnRcAdd.Visible = !active;
+            btnRcUpdate.Visible = !active;
+            btnRcDelete.Visible = !active;
+            btnSave.Visible = active;
+            btnCancel.Visible = active;
+            RecordsdataGridView1.Enabled = !active;
+            
         }
         private void GetTime()
         {
@@ -64,202 +80,92 @@ namespace C969_LatoyaH
 
         }
         
-        //public static int AddCust(string customerName, int addressId, string user)
-        //{
-        //    try
-        //    {
-        //        DateTime currentTm = DateTime.Now;
-        //        var addingCust = new Customer(customerName, addressId, 1, currentTm, user, currentTm, user);
-        //        string sql = "server = localhost; port=3306; username = sqlUser; password=Passw0rd!; database = client_schedule";
-        //        MySqlConnection con = new MySqlConnection(sql);
-        //        MySqlDataAdapter sda = new MySqlDataAdapter($"insert into 'customer' values ({addingCust.CustomerId}, '{addingCust.CustomerName}', " +
-        //            $"" + $"{addingCust.AddressId}, {addingCust.Active},{addingCust.CreateDate},{addingCust.CreatedBy},{addingCust.LastUpdate}," +
-        //            $"{addingCust.LastUpdateBy}", con);
-        //        DataTable dt = new DataTable();
-        //        sda.Fill(dt);
-
-        //        CustomerRecords.AllCustomers.Add(addingCust);
-        //        return addingCust.CustomerId;
-
-        //    }
-        //    catch (MySqlException ex)
-        //    {
-        //        MessageBox.Show("MySql Connection\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-        //    }
-        //}
+       
 
         private void btnRcAdd_Click(object sender, EventArgs e)
         {
+            RecordsdataGridView1.ClearSelection();
+            emptyFields();
+            Dictionary<int, string> ctNmDict = MainForm.cityDict.ToDictionary(dict => dict.Key, dict => dict.Value.CityName);
+            comboBoxCity.DataSource = new BindingSource(ctNmDict, null);
+            comboBoxCity.DisplayMember = "Value";
+            comboBoxCity.ValueMember = "Key";
+            comboBoxCity.SelectedItem = null;
+            ActiveSect(true);
 
-            ToolTip ttip = new ToolTip();
 
-            if (string.IsNullOrWhiteSpace(txtCusName.Text))
-            {
-                ttip.Show("Customer name is required ", txtCusName);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtCusAdd1.Text))
-            {
-                ttip.Show("Address is required", txtCusAdd1);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtCusCity.Text))
-            {
-                ttip.Show("City is required ", txtCusCity);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtCusCountry.Text))
-            {
-                ttip.Show("Country is required", txtCusCountry);
-                return;
-            }
-
-            else
-            {
-
-                string countryName = txtCusCountry.Text.ToString();
-                Country country = new Country();
-                country.CountryName = countryName;
-
-                int countryId = int.Parse(DataContext.GettheCountry(countryName));
-                if(countryId == 0)
-                {
-                    DataContext.AddaCountry(country);
-                }
-
-                string cityName = txtCusCity.Text.ToString();
-                City city = new City();
-                countryId = int.Parse(DataContext.GettheCountry(countryName));
-                city.CityName = cityName;
-                city.CountryId = countryId;
-
-                int cityId = int.Parse(DataContext.GettheCity(cityName));
-                if (cityId == 0)
-                {
-                    DataContext.AddCity(city);
-                }
-
-                Address address = new Address();
-                cityId = int.Parse(DataContext.GettheCity(cityName));
-                string customerAddress = txtCusAdd1.Text.ToString();
-                address.Address1 = txtCusAdd1.Text;
-                address.Address2 = txtCusAdd2.Text;
-                address.PostalCode = txtCusZip.Text;
-                address.Phone = txtCusPhone.Text;
-                address.CityId = cityId;
-
-                int addressId = int.Parse(DataContext.GetaAddress(customerAddress));
-                if(addressId == 0)
-                {
-                    DataContext.AddAddress(address);
-                }
-
-                addressId = int.Parse(DataContext.GetaAddress(customerAddress));
-                Customer customer = new Customer();
-                customer.CustomerName = txtCusName.Text;
-                customer.AddressId = addressId;
-                DataContext.AddaCustomer(customer);
-
-                DataContext.ActivityLogs(User.UserName, "Added a customer " + customer.CustomerName);
-
-                ShowCustomers();
-
-            }
+         
 
         }
 
 
         private void btnRcUpdate_Click(object sender, EventArgs e)
         {
-            ToolTip ttip = new ToolTip();
-
-            if (string.IsNullOrWhiteSpace(txtCusName.Text))
+            try
             {
-                ttip.Show("Customer name is required ", txtCusName);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtCusAdd1.Text))
-            {
-                ttip.Show("Address is required", txtCusAdd1);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtCusCity.Text))
-            {
-                ttip.Show("City is required ", txtCusCity);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtCusCountry.Text))
-            {
-                ttip.Show("Country is required", txtCusCountry);
-                return;
-            }
-
-            else
-            {
-
-                string countryName = txtCusCountry.Text.ToString();
-                Country country = new Country();
-                country.CountryName = countryName;
-
-                int countryId = int.Parse(DataContext.GettheCountry(countryName));
-                if (countryId == 0)
+                if (RecordsdataGridView1.SelectedRows.Count < 1)
                 {
-                    DataContext.AddaCountry(country);
+                    throw new ApplicationException("Select a customer to update");
                 }
-
-                string cityName = txtCusCity.Text.ToString();
-                City city = new City();
-                countryId = int.Parse(DataContext.GettheCountry(countryName));
-                city.CityName = cityName;
-                city.CountryId = countryId;
-
-                int cityId = int.Parse(DataContext.GettheCity(cityName));
-                if (cityId == 0)
-                {
-                    DataContext.AddCity(city);
-                }
-
-                Address address = new Address();
-                cityId = int.Parse(DataContext.GettheCity(cityName));
-                string customerAddress = txtCusAdd1.Text.ToString();
-                address.Address1 = txtCusAdd1.Text;
-                address.Address2 = txtCusAdd2.Text;
-                address.PostalCode = txtCusZip.Text;
-                address.Phone = txtCusPhone.Text;
-                address.CityId = cityId;
-
-                int addressId = int.Parse(DataContext.GetaAddress(customerAddress));
-                if (addressId == 0)
-                {
-                    DataContext.AddAddress(address);
-                }
-
-                var customerId = RecordsdataGridView1.CurrentRow.Cells[0].Value;
-                addressId = int.Parse(DataContext.GetaAddress(customerAddress));
-                Customer customer = new Customer();
-                customer.CustomerId = int.Parse((string)customerId);
-                customer.CustomerName = txtCusName.Text;
-                customer.AddressId = addressId;
-                DataContext.UpdateaCustomer(customer);
-
-                DataContext.ActivityLogs(User.UserName, "Updated a customer " + customer.CustomerName);
-
-                ShowCustomers();
-
+                ActiveSect(true);
+                var selCountry = Convert.ToInt32(comboBoxCountry.SelectedValue);
+                var nwCty = MainForm.cityDict.Where(dict => dict.Value.CountryId == selCountry).ToDictionary(dict => dict.Key, dict => dict.Value.CityName);
+                comboBoxCity.DataSource = new BindingSource(nwCty, null);
+                comboBoxCity.DisplayMember = "Value";
+                comboBoxCity.ValueMember = "Key";
             }
+            catch (ApplicationException ex)
+            {
+                MessageBox.Show(ex.Message, "There was an issue updating customer", MessageBoxButtons.OK);
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message, "There was an error", MessageBoxButtons.OK);
+            }
+        
+
+        
+           
+
         }
+        
         private void btnRcDelete_Click(object sender, EventArgs e)
         {
-            var confirmation = MessageBox.Show("Sure you want to delete? ", "Confirmed", MessageBoxButtons.YesNo);
-
-            if(confirmation == DialogResult.Yes)
+            try
             {
-                int customerId = int.Parse(RecordsdataGridView1.CurrentRow.Cells[0].Value.ToString());
-                DataContext.DeleteaCustomer(customerId);
-                DataContext.ActivityLogs(User.UserName, "Customer deleted id " + customerId);
+                if (RecordsdataGridView1.SelectedRows.Count < 1)
+                {
+                    throw new ApplicationException("Who would you like to delet?");
+                }
+                DialogResult confirmation = MessageBox.Show("Sure you want to delete? ", "Confirmed", MessageBoxButtons.YesNo);
+
+                if (confirmation == DialogResult.Yes)
+                {
+                    var selRow = RecordsdataGridView1.SelectedRows[0];
+                    int selcustomerId = Convert.ToInt32(selRow.Cells[0].Value);
+                    bool schAppt = false;
+
+                    foreach (var a in MainForm.ApptLt) { if (a.CustomerId == selcustomerId) { schAppt = true; } }
+                    if (schAppt) { throw new ApplicationException("Dont remove customer with appointment"); }
+                    Customer selCust = MainForm.CustLt.Where(c => c.CustomerId == selcustomerId).Single();
+                    DataContext.DeleteaCustomer(selCust);
+                    emptyFields();
+                    //DataContext.ActivityLogs(user,"Customer deleted id " + customerId);
+                }
+                else
+                {
+                    RecordsdataGridView1.ClearSelection();
+                    emptyFields();
+                }
             }
-            ShowCustomers();
+            catch (ApplicationException ex)
+            {
+                MessageBox.Show(ex.Message, "There was an issue deleting customer", MessageBoxButtons.OK);
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message, "There was an error", MessageBoxButtons.OK);
+            }
         }
 
 
@@ -270,19 +176,12 @@ namespace C969_LatoyaH
         /// <param name="e"></param>
         private void btnAppt_Click(object sender, EventArgs e)
         {
-            int currentUser = User.UserId;
-            this.Hide();
-            Appointments schedule = new Appointments();
-            schedule.ShowDialog();
-            this.Close();
+            Close();
         }
 
         private void btnReports_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Reports report = new Reports();
-            report.ShowDialog();
-            this.Close();
+            Close();
         }
 
         private void RecordsdataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -290,23 +189,149 @@ namespace C969_LatoyaH
             txtCusName.Text = RecordsdataGridView1.CurrentRow.Cells[1].Value.ToString();
             txtCusAdd1.Text = RecordsdataGridView1.CurrentRow.Cells[2].Value.ToString();
             txtCusAdd2.Text = RecordsdataGridView1.CurrentRow.Cells[3].Value.ToString();
-            txtCusCity.Text = RecordsdataGridView1.CurrentRow.Cells[4].Value.ToString();
+            comboBoxCity.Text = RecordsdataGridView1.CurrentRow.Cells[4].Value.ToString();
             txtCusZip.Text = RecordsdataGridView1.CurrentRow.Cells[5].Value.ToString();
-            txtCusCountry.Text = RecordsdataGridView1.CurrentRow.Cells[6].Value.ToString();
+            comboBoxCountry.Text = RecordsdataGridView1.CurrentRow.Cells[6].Value.ToString();
             txtCusPhone.Text = RecordsdataGridView1.CurrentRow.Cells[7].Value.ToString();
         }
 
-        //private void RecordsdataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    getApptDb();
-        //}
-        //public void getApptDb()
-        //{
-        //    string apptCommunication = $"Select appointment.appointmentId, customer.customerName, customer.customerId, appointment.title," +
-        //        $"appointment.descrption, appointment.location,appointment.contact, appointment.start, appointment.end, appointment.type," +
-        //        $"appointment.url FROM appointment Inner Join customer on appointment.customerId = customer.customerId Inner Join 'user' on " +
-        //        $"appoinment.userId = 'user'.userId Where customer.customerId = '{RecordsdataGridView1.CurrentRow.Cells[0].Value}'";
+        
 
-        //}
+        private void CustomerRecords_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MainControl.Show();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ToolTip ttip = new ToolTip();
+
+                if (string.IsNullOrWhiteSpace(txtCusName.Text))
+                {
+                    ttip.Show("Customer name is required ", txtCusName);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(txtCusAdd1.Text))
+                {
+                    ttip.Show("Address is required", txtCusAdd1);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(comboBoxCity.Text))
+                {
+                    ttip.Show("City is required ", comboBoxCity);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(comboBoxCountry.Text))
+                {
+                    ttip.Show("Country is required", comboBoxCountry);
+                    return;
+                }
+                string customerName = txtCusName.Text;
+                string address1 = txtCusAdd1.Text;
+                string address2 = txtCusAdd2.Text;
+                string postalCode = txtCusZip.Text;
+                string phone = txtCusPhone.Text;
+                int cityId = Convert.ToInt32(comboBoxCity.SelectedValue);
+                int cusId;
+                if (txtId.Text == "")
+                {
+                    int adrsId = DataContext.AddAddress(address1, address2, cityId, postalCode, phone, MainForm.LgdUsr.UserName);
+                    cusId = DataContext.AddaCustomer(customerName, adrsId, MainForm.LgdUsr.UserName);
+                    txtId.Text = cusId.ToString();
+                }
+                else
+                {
+                    cusId = Convert.ToInt32(txtId.Text);
+                    Customer curCus = MainForm.CustLt.Where(ct => ct.CustomerId == cusId).Single();
+                    Address addss = MainForm.addDict[curCus.AddressId];
+                    DataContext.UpdateaCustomer(curCus, customerName, MainForm.LgdUsr.UserName);
+                    DataContext.UpdateaAddress(addss, address1, address2, cityId, postalCode, phone, MainForm.LgdUsr.UserName);
+
+                }
+                ActiveSect(false);
+                RecordsdataGridView1.Rows.Cast<DataGridViewRow>().Where(row => Convert.ToInt32(row.Cells[0].Value) == cusId).Single().Selected = true;
+
+            }
+            catch (ApplicationException ex)
+            {
+                MessageBox.Show(ex.Message, "There was an issue  saving user", MessageBoxButtons.OK);
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message, "There was an error", MessageBoxButtons.OK);
+            }
+           
+
+        }
+
+        private void comboBoxCity_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (comboBoxCountry.Text == "") { var seCTKy = comboBoxCity.SelectedValue; int selCountry = MainForm.cityDict[Convert.ToInt32(seCTKy)].CountryId;
+                comboBoxCountry.Text = MainForm.countryDict[selCountry].CountryName;
+            }
+                    
+        }
+
+        private void comboBoxCountry_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            var selCountry = Convert.ToInt32(comboBoxCountry.SelectedValue);
+            var nwCyDic = MainForm.cityDict.Where(dict => dict.Value.CountryId == selCountry).ToDictionary(dict => dict.Key, dict => dict.Value.CityName);
+            comboBoxCity.DataSource = new BindingSource(nwCyDic, null) ;
+            comboBoxCity.DisplayMember = "Value";
+            comboBoxCity.ValueMember = "Key";
+            comboBoxCity.SelectedItem = null;
+
+
+
+
+        }
+
+        private void RecordsdataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var selRw = RecordsdataGridView1.SelectedRows[0];
+            int selCusId = Convert.ToInt32(selRw.Cells[0].Value);
+            Customer selCus = MainForm.CustLt.Where(cus => cus.CustomerId == selCusId).Single();
+            int selAddId = Convert.ToInt32(selCus.AddressId);
+            int selcyId = MainForm.addDict[selAddId].CityId;
+            int selcounId = MainForm.cityDict[selcyId].CountryId;
+            txtCusName.Text = selCus.CustomerName;
+            txtId.Text = selCus.CustomerId.ToString();
+            txtCusAdd1.Text = MainForm.addDict[selAddId].Address1;
+            txtCusAdd2.Text = MainForm.addDict[selAddId].Address2;
+            txtCusZip.Text = MainForm.addDict[selAddId].PostalCode;
+            txtCusPhone.Text = MainForm.addDict[selAddId].Phone;
+            comboBoxCity.Text = MainForm.cityDict[selcyId].CityName;
+            comboBoxCountry.Text = MainForm.countryDict[selcounId].CountryName;
+
+
+
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            RecordsdataGridView1.ClearSelection();
+            emptyFields();
+            ActiveSect(false);
+        }
+
+        private void RecordsdataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            formatGrid();
+        }
+
+        private void formatGrid()
+        {
+            var dgView = RecordsdataGridView1;
+            dgView.AutoResizeColumns();
+            dgView.RowHeadersVisible = false;
+            dgView.ReadOnly = true;
+            dgView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgView.MultiSelect = false;
+            dgView.ClearSelection();
+        }
     }
+    
 }

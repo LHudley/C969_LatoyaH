@@ -6,26 +6,40 @@ using System.Threading.Tasks;
 
 namespace C969_LatoyaH
 {
-    public static class User
+    public  class User
     {
 
-        private static int userId;
-        private static string username;
-        private static string password;
-        private static byte active;
-        private static DateTime createDate;
-        private static string createdBy;
-        private static DateTime lastUpdate;
-        private static string lastUpdateBy;
+        //private  int userId;
+        //private  string username;
+        //private  string password;
+        //private  byte active;
+        //private  DateTime createDate;
+        //private  string createdBy;
+        //private  DateTime lastUpdate;
+        //private  string lastUpdateBy;
+        public string user;
+        public   int UserId { get; set; }
+        public  string UserName { get; set; }
+        public  string Password { get; set; }
+        public  byte Active { get; set; }
+        public  DateTime CreateDate { get; set; }
+        public  string CreatedBy { get; set; }
+        public  DateTime LastUpdate { get; set; }
+        public  string LastUpdateBy { get; set; }
 
-        public static  int UserId { get; set; }
-            public static string UserName { get; set; }
-            public static string Password { get; set; }
-            public static byte Active { get; set; }
-            public static DateTime CreateDate { get; set; }
-            public static string CreatedBy { get; set; }
-            public static DateTime LastUpdate { get; set; }
-            public static string LastUpdateBy { get; set; }
+        public User(int userId, string userName, string password, int active, DateTime createDate, string createdBy, DateTime lastUpdate, string lastUpdateBy)
+        {
+             UserId = userId;
+            UserName = userName;
+            Password = password;
+            Active = (byte)active;
+            CreateDate = createDate;
+            CreatedBy = createdBy;
+            LastUpdate = lastUpdate;
+            LastUpdateBy = lastUpdateBy;
+
+
+        }
 
 
 

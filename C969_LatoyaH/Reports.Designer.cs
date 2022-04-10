@@ -40,7 +40,6 @@ namespace C969_LatoyaH
             this.rdBtnCustomer = new System.Windows.Forms.RadioButton();
             this.rdBtnUser = new System.Windows.Forms.RadioButton();
             this.rdBtnType = new System.Windows.Forms.RadioButton();
-            this.comBxUser = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -74,7 +73,7 @@ namespace C969_LatoyaH
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Image = global::C969_LatoyaH.Properties.Resources.statistics_32;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 290);
+            this.button3.Location = new System.Drawing.Point(0, 349);
             this.button3.Name = "button3";
             this.button3.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.button3.Size = new System.Drawing.Size(161, 94);
@@ -92,7 +91,7 @@ namespace C969_LatoyaH
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Image = global::C969_LatoyaH.Properties.Resources.database_32;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(0, 59);
+            this.button2.Location = new System.Drawing.Point(0, 149);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.button2.Size = new System.Drawing.Size(161, 94);
@@ -100,7 +99,7 @@ namespace C969_LatoyaH
             this.button2.Text = "Records";
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button1
             // 
@@ -111,7 +110,7 @@ namespace C969_LatoyaH
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = global::C969_LatoyaH.Properties.Resources.clipboard_8_32;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(-3, 177);
+            this.button1.Location = new System.Drawing.Point(0, 249);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(161, 94);
@@ -119,7 +118,7 @@ namespace C969_LatoyaH
             this.button1.Text = "Appointments";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // panel2
             // 
@@ -153,20 +152,20 @@ namespace C969_LatoyaH
             // 
             this.rdBtnCustomer.AutoSize = true;
             this.rdBtnCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdBtnCustomer.Location = new System.Drawing.Point(197, 551);
+            this.rdBtnCustomer.Location = new System.Drawing.Point(392, 548);
             this.rdBtnCustomer.Name = "rdBtnCustomer";
-            this.rdBtnCustomer.Size = new System.Drawing.Size(177, 19);
+            this.rdBtnCustomer.Size = new System.Drawing.Size(196, 19);
             this.rdBtnCustomer.TabIndex = 3;
             this.rdBtnCustomer.TabStop = true;
-            this.rdBtnCustomer.Text = "Customer Appointments";
+            this.rdBtnCustomer.Text = "Consultation Appointments";
             this.rdBtnCustomer.UseVisualStyleBackColor = true;
-            this.rdBtnCustomer.CheckedChanged += new System.EventHandler(this.rdBtnCustomer_CheckedChanged);
+            this.rdBtnCustomer.CheckedChanged += new System.EventHandler(this.rdBtnCustomer_CheckedChanged_1);
             // 
             // rdBtnUser
             // 
             this.rdBtnUser.AutoSize = true;
             this.rdBtnUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdBtnUser.Location = new System.Drawing.Point(495, 475);
+            this.rdBtnUser.Location = new System.Drawing.Point(579, 475);
             this.rdBtnUser.Name = "rdBtnUser";
             this.rdBtnUser.Size = new System.Drawing.Size(150, 19);
             this.rdBtnUser.TabIndex = 4;
@@ -188,20 +187,11 @@ namespace C969_LatoyaH
             this.rdBtnType.UseVisualStyleBackColor = true;
             this.rdBtnType.CheckedChanged += new System.EventHandler(this.rdBtnType_CheckedChanged);
             // 
-            // comBxUser
-            // 
-            this.comBxUser.FormattingEnabled = true;
-            this.comBxUser.Location = new System.Drawing.Point(651, 476);
-            this.comBxUser.Name = "comBxUser";
-            this.comBxUser.Size = new System.Drawing.Size(121, 21);
-            this.comBxUser.TabIndex = 6;
-            // 
             // Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(798, 676);
-            this.Controls.Add(this.comBxUser);
             this.Controls.Add(this.rdBtnType);
             this.Controls.Add(this.rdBtnUser);
             this.Controls.Add(this.rdBtnCustomer);
@@ -210,6 +200,8 @@ namespace C969_LatoyaH
             this.Controls.Add(this.panel1);
             this.Name = "Reports";
             this.Text = "Reports";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Reports_FormClosed);
+            this.Load += new System.EventHandler(this.Reports_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -230,7 +222,6 @@ namespace C969_LatoyaH
         private System.Windows.Forms.RadioButton rdBtnCustomer;
         private System.Windows.Forms.RadioButton rdBtnUser;
         private System.Windows.Forms.RadioButton rdBtnType;
-        public System.Windows.Forms.ComboBox comBxUser;
         public System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

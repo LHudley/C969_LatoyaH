@@ -11,50 +11,83 @@ namespace C969_LatoyaH
         public int AppointmentId { get; set; }
         public int CustomerId { get; set; }
         public int UserId { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Location { get; set; }
-        public string Contact { get; set; }
+      
         public string Type { get; set; }
-        public string Url { get; set; } 
-        public string CreatedBy { get; set; }
-        public string LastUpdateBy { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
         public DateTime CreateDate { get; set; }
+
+        public string CreatedBy { get; set; }
         public DateTime LastUpdate { get; set; }
 
+        public string LastUpdateBy { get; set; }
+       
+        
+      
         private static int count = 0;
-        public Appointment(int appointmentId, int customerId, int userId, string title, string description, string location,
-           string contact, string type, string url, string createdBy, string lastUpdateBy, DateTime start, DateTime end, 
-           DateTime createDate, DateTime lastUpdate)
+        //private object customerId;
+        //private object type;
+        //private object start;
+        //private object end;
+        //private DateTime now1;
+        //private string userName1;
+        //private DateTime now2;
+        //private string userName2;
+
+        public Appointment(int appointmentId, int customerId, int userId, string type, DateTime start, DateTime end, DateTime createDate, string createdBy, DateTime lastUpdate,string lastUpdateBy)  
+           
         {
             AppointmentId = appointmentId;
-            CustomerId = customerId;
-            UserId = userId;
-            Title = title;
-            Description = description;
-            Location = location;
-            Contact = contact;
-            Type = type;
-            Url = url;
-            CreatedBy = createdBy;
-            LastUpdateBy = lastUpdateBy;
-            Start = start;
-            End = end;
-            CreateDate = createDate;
-            LastUpdate = lastUpdate;
-
-            
             if (appointmentId > count)
             {
                 count = appointmentId;
-                count++;
+                
             }
+            CustomerId = customerId;
+            UserId = userId;
+            
+            Type = type;
+            Start = start;
+            End = end;
+            CreateDate = createDate;
+
+            CreatedBy = createdBy;
+            LastUpdate = lastUpdate;
+
+            LastUpdateBy = lastUpdateBy;
+           
+
+            
+           
         }
 
-        public Appointment()
+       
+
+       
+
+        public Appointment(int customerId, int userId,  string type,  DateTime start, DateTime end, DateTime createDate, string createdBy, DateTime lastUpdate, string lastUpdateBy)
         {
+            count++;
+            
+            CustomerId = customerId;
+            UserId = userId;
+           
+            Type = type;
+            Start = start;
+            End = end;
+            CreateDate = createDate;
+
+            CreatedBy = createdBy;
+            LastUpdate = lastUpdate;
+
+            LastUpdateBy = lastUpdateBy;
+
         }
+
+      
+
+       
+        
+
     }
 }

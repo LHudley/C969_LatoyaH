@@ -14,15 +14,18 @@ namespace C969_LatoyaH
         public int CityId { get; set; }
         public string PostalCode { get; set; }
         public string Phone { get; set; }
-        public string CreatedBy { get; set; }
-        public string LastUpdateBy { get; set; }
         public DateTime CreateDate { get; set; }
+
+        public string CreatedBy { get; set; }
         public DateTime LastUpdate { get; set; }
+
+        public string LastUpdateBy { get; set; }
+       
 
         private static int count = 0;
 
         public Address(int addressId, string address1, string address2, int cityId, string postalCode, string phone,
-            string createdBy, string lastUpdateBy, DateTime createDate, DateTime lastUpdate)
+            DateTime createDate, string createdBy, DateTime lastUpdate, string lastUpdateBy)
         {
             AddressId = addressId;
             Address1 = address1;
@@ -30,10 +33,12 @@ namespace C969_LatoyaH
             CityId = cityId;
             PostalCode = postalCode;
             Phone = phone;
-            CreatedBy = createdBy;
-            LastUpdateBy = lastUpdateBy;
             CreateDate = createDate;
+
+            CreatedBy = createdBy;
             LastUpdate = lastUpdate;
+
+            LastUpdateBy = lastUpdateBy;
 
             if (addressId > count)
             {
@@ -42,8 +47,22 @@ namespace C969_LatoyaH
             }
         }
 
-        public Address()
+      
+
+        public Address(string address1, string address2, int cityId, string postalCode, string phone, DateTime createDate,string createdBy, DateTime lastUpdate,string lastUpdateBy)
         {
+            Address1 = address1;
+            Address2 = address2;
+            CityId = cityId;
+            PostalCode = postalCode;
+            Phone = phone;
+            CreateDate = createDate;
+
+            CreatedBy = createdBy;
+            LastUpdate = lastUpdate;
+
+            LastUpdateBy = lastUpdateBy;
+
         }
     }
 }

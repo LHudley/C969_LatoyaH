@@ -51,10 +51,14 @@ namespace C969_LatoyaH
             this.txtCusName = new System.Windows.Forms.TextBox();
             this.txtCusAdd1 = new System.Windows.Forms.TextBox();
             this.txtCusAdd2 = new System.Windows.Forms.TextBox();
-            this.txtCusCity = new System.Windows.Forms.TextBox();
             this.txtCusZip = new System.Windows.Forms.TextBox();
-            this.txtCusCountry = new System.Windows.Forms.TextBox();
             this.txtCusPhone = new System.Windows.Forms.TextBox();
+            this.comboBoxCity = new System.Windows.Forms.ComboBox();
+            this.comboBoxCountry = new System.Windows.Forms.ComboBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsdataGridView1)).BeginInit();
@@ -80,7 +84,7 @@ namespace C969_LatoyaH
             this.btnReports.ForeColor = System.Drawing.Color.White;
             this.btnReports.Image = global::C969_LatoyaH.Properties.Resources.statistics_32;
             this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(0, 290);
+            this.btnReports.Location = new System.Drawing.Point(0, 356);
             this.btnReports.Name = "btnReports";
             this.btnReports.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.btnReports.Size = new System.Drawing.Size(161, 94);
@@ -98,7 +102,7 @@ namespace C969_LatoyaH
             this.btnAppt.ForeColor = System.Drawing.Color.White;
             this.btnAppt.Image = global::C969_LatoyaH.Properties.Resources.clipboard_8_32;
             this.btnAppt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAppt.Location = new System.Drawing.Point(0, 176);
+            this.btnAppt.Location = new System.Drawing.Point(0, 256);
             this.btnAppt.Name = "btnAppt";
             this.btnAppt.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.btnAppt.Size = new System.Drawing.Size(161, 94);
@@ -117,7 +121,7 @@ namespace C969_LatoyaH
             this.btnRecords.ForeColor = System.Drawing.Color.White;
             this.btnRecords.Image = global::C969_LatoyaH.Properties.Resources.database_32;
             this.btnRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRecords.Location = new System.Drawing.Point(0, 61);
+            this.btnRecords.Location = new System.Drawing.Point(0, 156);
             this.btnRecords.Name = "btnRecords";
             this.btnRecords.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.btnRecords.Size = new System.Drawing.Size(161, 94);
@@ -158,17 +162,21 @@ namespace C969_LatoyaH
             this.RecordsdataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.RecordsdataGridView1.Location = new System.Drawing.Point(190, 98);
             this.RecordsdataGridView1.Name = "RecordsdataGridView1";
+            this.RecordsdataGridView1.ReadOnly = true;
             this.RecordsdataGridView1.RowHeadersVisible = false;
-            this.RecordsdataGridView1.Size = new System.Drawing.Size(583, 284);
+            this.RecordsdataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.RecordsdataGridView1.Size = new System.Drawing.Size(583, 205);
             this.RecordsdataGridView1.TabIndex = 2;
             this.RecordsdataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RecordsdataGridView1_CellContentClick);
+            this.RecordsdataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.RecordsdataGridView1_CellMouseClick);
+            this.RecordsdataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.RecordsdataGridView1_DataBindingComplete);
             // 
             // btnRcAdd
             // 
             this.btnRcAdd.BackColor = System.Drawing.Color.Black;
             this.btnRcAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRcAdd.ForeColor = System.Drawing.Color.White;
-            this.btnRcAdd.Location = new System.Drawing.Point(190, 388);
+            this.btnRcAdd.Location = new System.Drawing.Point(190, 329);
             this.btnRcAdd.Name = "btnRcAdd";
             this.btnRcAdd.Size = new System.Drawing.Size(75, 37);
             this.btnRcAdd.TabIndex = 3;
@@ -181,7 +189,7 @@ namespace C969_LatoyaH
             this.btnRcUpdate.BackColor = System.Drawing.Color.Black;
             this.btnRcUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRcUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnRcUpdate.Location = new System.Drawing.Point(304, 388);
+            this.btnRcUpdate.Location = new System.Drawing.Point(294, 329);
             this.btnRcUpdate.Name = "btnRcUpdate";
             this.btnRcUpdate.Size = new System.Drawing.Size(75, 37);
             this.btnRcUpdate.TabIndex = 4;
@@ -194,7 +202,7 @@ namespace C969_LatoyaH
             this.btnRcDelete.BackColor = System.Drawing.Color.Black;
             this.btnRcDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRcDelete.ForeColor = System.Drawing.Color.White;
-            this.btnRcDelete.Location = new System.Drawing.Point(413, 388);
+            this.btnRcDelete.Location = new System.Drawing.Point(409, 329);
             this.btnRcDelete.Name = "btnRcDelete";
             this.btnRcDelete.Size = new System.Drawing.Size(75, 37);
             this.btnRcDelete.TabIndex = 5;
@@ -283,6 +291,7 @@ namespace C969_LatoyaH
             // 
             // txtCusName
             // 
+            this.txtCusName.Enabled = false;
             this.txtCusName.Location = new System.Drawing.Point(313, 447);
             this.txtCusName.Name = "txtCusName";
             this.txtCusName.Size = new System.Drawing.Size(345, 20);
@@ -290,6 +299,7 @@ namespace C969_LatoyaH
             // 
             // txtCusAdd1
             // 
+            this.txtCusAdd1.Enabled = false;
             this.txtCusAdd1.Location = new System.Drawing.Point(313, 476);
             this.txtCusAdd1.Name = "txtCusAdd1";
             this.txtCusAdd1.Size = new System.Drawing.Size(345, 20);
@@ -297,48 +307,107 @@ namespace C969_LatoyaH
             // 
             // txtCusAdd2
             // 
+            this.txtCusAdd2.Enabled = false;
             this.txtCusAdd2.Location = new System.Drawing.Point(313, 506);
             this.txtCusAdd2.Name = "txtCusAdd2";
             this.txtCusAdd2.Size = new System.Drawing.Size(345, 20);
             this.txtCusAdd2.TabIndex = 16;
             // 
-            // txtCusCity
-            // 
-            this.txtCusCity.Location = new System.Drawing.Point(313, 539);
-            this.txtCusCity.Name = "txtCusCity";
-            this.txtCusCity.Size = new System.Drawing.Size(345, 20);
-            this.txtCusCity.TabIndex = 17;
-            // 
             // txtCusZip
             // 
+            this.txtCusZip.Enabled = false;
             this.txtCusZip.Location = new System.Drawing.Point(313, 573);
             this.txtCusZip.Name = "txtCusZip";
             this.txtCusZip.Size = new System.Drawing.Size(345, 20);
             this.txtCusZip.TabIndex = 18;
             // 
-            // txtCusCountry
-            // 
-            this.txtCusCountry.Location = new System.Drawing.Point(313, 603);
-            this.txtCusCountry.Name = "txtCusCountry";
-            this.txtCusCountry.Size = new System.Drawing.Size(345, 20);
-            this.txtCusCountry.TabIndex = 19;
-            // 
             // txtCusPhone
             // 
+            this.txtCusPhone.Enabled = false;
             this.txtCusPhone.Location = new System.Drawing.Point(313, 630);
             this.txtCusPhone.Name = "txtCusPhone";
             this.txtCusPhone.Size = new System.Drawing.Size(345, 20);
             this.txtCusPhone.TabIndex = 20;
+            // 
+            // comboBoxCity
+            // 
+            this.comboBoxCity.Enabled = false;
+            this.comboBoxCity.FormattingEnabled = true;
+            this.comboBoxCity.Location = new System.Drawing.Point(313, 543);
+            this.comboBoxCity.Name = "comboBoxCity";
+            this.comboBoxCity.Size = new System.Drawing.Size(345, 21);
+            this.comboBoxCity.TabIndex = 21;
+            this.comboBoxCity.SelectionChangeCommitted += new System.EventHandler(this.comboBoxCity_SelectionChangeCommitted);
+            // 
+            // comboBoxCountry
+            // 
+            this.comboBoxCountry.Enabled = false;
+            this.comboBoxCountry.FormattingEnabled = true;
+            this.comboBoxCountry.Location = new System.Drawing.Point(313, 602);
+            this.comboBoxCountry.Name = "comboBoxCountry";
+            this.comboBoxCountry.Size = new System.Drawing.Size(345, 21);
+            this.comboBoxCountry.TabIndex = 22;
+            this.comboBoxCountry.SelectionChangeCommitted += new System.EventHandler(this.comboBoxCountry_SelectionChangeCommitted);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.Black;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(687, 329);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 37);
+            this.btnSave.TabIndex = 23;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Visible = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(180, 417);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(23, 15);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Id:";
+            // 
+            // txtId
+            // 
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(315, 411);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(343, 20);
+            this.txtId.TabIndex = 25;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.Black;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(534, 329);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 37);
+            this.btnCancel.TabIndex = 26;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // CustomerRecords
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(798, 676);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.txtId);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.comboBoxCountry);
+            this.Controls.Add(this.comboBoxCity);
             this.Controls.Add(this.txtCusPhone);
-            this.Controls.Add(this.txtCusCountry);
             this.Controls.Add(this.txtCusZip);
-            this.Controls.Add(this.txtCusCity);
             this.Controls.Add(this.txtCusAdd2);
             this.Controls.Add(this.txtCusAdd1);
             this.Controls.Add(this.txtCusName);
@@ -357,6 +426,8 @@ namespace C969_LatoyaH
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Name = "CustomerRecords";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CustomerRecords_FormClosed);
+            this.Load += new System.EventHandler(this.CustomerRecords_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -390,9 +461,13 @@ namespace C969_LatoyaH
         private System.Windows.Forms.TextBox txtCusName;
         private System.Windows.Forms.TextBox txtCusAdd1;
         private System.Windows.Forms.TextBox txtCusAdd2;
-        private System.Windows.Forms.TextBox txtCusCity;
         private System.Windows.Forms.TextBox txtCusZip;
-        private System.Windows.Forms.TextBox txtCusCountry;
         private System.Windows.Forms.TextBox txtCusPhone;
+        private System.Windows.Forms.ComboBox comboBoxCity;
+        private System.Windows.Forms.ComboBox comboBoxCountry;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

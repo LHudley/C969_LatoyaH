@@ -12,50 +12,45 @@ namespace C969_LatoyaH
         public string CustomerName { get; set; }
         public int AddressId { get; set; }
         public byte Active { get; set; }
-        public string CreatedBy { get; set; }
-        public string LastUpdateBy { get; set; }
         public DateTime CreateDate { get; set; }
+        public string CreatedBy { get; set; }
+
         public DateTime LastUpdate { get; set; }
+        public string LastUpdateBy { get; set; }
 
-        public static int count = 0;
-        //private int v;
-        private DateTime currentTm1;
-        private string user1;
-        private DateTime currentTm2;
-        private string user2;
+        private static int count = 0;
 
-        public Customer(int customerId, string customerName, int addressId, int active, string createdBy, string lastUpdateBy,
-            DateTime createDate, DateTime lastUpdate)
+
+
+        public Customer(int customerId, string customerName, int addressId, int active, DateTime createDate,string createdBy, DateTime lastUpdate, string lastUpdateBy)  
         {
             CustomerId = customerId;
             CustomerName = customerName;
             AddressId = addressId;
             Active = (byte)active;
-            CreatedBy = createdBy;
-            LastUpdateBy = lastUpdateBy;
             CreateDate = createDate;
+            CreatedBy = createdBy;
             LastUpdate = lastUpdate;
+            LastUpdateBy = lastUpdateBy;
+            
 
-            if (customerId > count)
-            {
-                count = customerId;
-                count++;
-            }
+           
         }
 
-        public Customer(string customerName, int addressId, int v, DateTime currentTm1, string user1, DateTime currentTm2, string user2)
+        public Customer(string customerName, int addressId, int active, DateTime createDate, string createdBy, DateTime lastUpdate, string lastUpdateBy)
         {
+            count++;
+            CustomerId = count;
             CustomerName = customerName;
             AddressId = addressId;
-            //this.v = v;
-            this.currentTm1 = currentTm1;
-            this.user1 = user1;
-            this.currentTm2 = currentTm2;
-            this.user2 = user2;
+            Active = (byte)active;
+            CreateDate = createDate;
+            CreatedBy = createdBy;
+            LastUpdate = lastUpdate;
+            LastUpdateBy = lastUpdateBy;
+
         }
 
-        public Customer()
-        {
-        }
+       
     }
 }

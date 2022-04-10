@@ -29,6 +29,7 @@ namespace C969_LatoyaH
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnReports = new System.Windows.Forms.Button();
             this.btnRecords = new System.Windows.Forms.Button();
@@ -42,10 +43,14 @@ namespace C969_LatoyaH
             this.btnAddApp = new System.Windows.Forms.Button();
             this.btnUpdtApp = new System.Windows.Forms.Button();
             this.btnDlApp = new System.Windows.Forms.Button();
+            this.client_scheduleDataSet = new C969_LatoyaH.client_scheduleDataSet();
+            this.clientscheduleDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.client_scheduleDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientscheduleDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -69,7 +74,7 @@ namespace C969_LatoyaH
             this.btnReports.ForeColor = System.Drawing.Color.White;
             this.btnReports.Image = global::C969_LatoyaH.Properties.Resources.statistics_32;
             this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(0, 274);
+            this.btnReports.Location = new System.Drawing.Point(0, 359);
             this.btnReports.Name = "btnReports";
             this.btnReports.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.btnReports.Size = new System.Drawing.Size(161, 94);
@@ -77,7 +82,7 @@ namespace C969_LatoyaH
             this.btnReports.Text = "Reports";
             this.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnReports.UseVisualStyleBackColor = false;
-            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click_1);
             // 
             // btnRecords
             // 
@@ -88,7 +93,7 @@ namespace C969_LatoyaH
             this.btnRecords.ForeColor = System.Drawing.Color.White;
             this.btnRecords.Image = global::C969_LatoyaH.Properties.Resources.database_32;
             this.btnRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRecords.Location = new System.Drawing.Point(0, 74);
+            this.btnRecords.Location = new System.Drawing.Point(0, 159);
             this.btnRecords.Name = "btnRecords";
             this.btnRecords.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.btnRecords.Size = new System.Drawing.Size(161, 94);
@@ -96,7 +101,7 @@ namespace C969_LatoyaH
             this.btnRecords.Text = "Records";
             this.btnRecords.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRecords.UseVisualStyleBackColor = false;
-            this.btnRecords.Click += new System.EventHandler(this.btnRecords_Click);
+            this.btnRecords.Click += new System.EventHandler(this.btnRecords_Click_1);
             // 
             // btnAppt
             // 
@@ -107,7 +112,7 @@ namespace C969_LatoyaH
             this.btnAppt.ForeColor = System.Drawing.Color.White;
             this.btnAppt.Image = global::C969_LatoyaH.Properties.Resources.clipboard_8_32;
             this.btnAppt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAppt.Location = new System.Drawing.Point(3, 174);
+            this.btnAppt.Location = new System.Drawing.Point(0, 259);
             this.btnAppt.Name = "btnAppt";
             this.btnAppt.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.btnAppt.Size = new System.Drawing.Size(161, 94);
@@ -149,8 +154,8 @@ namespace C969_LatoyaH
             this.dataGridViewAppt.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewAppt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAppt.Location = new System.Drawing.Point(167, 85);
-            this.dataGridViewAppt.MultiSelect = false;
             this.dataGridViewAppt.Name = "dataGridViewAppt";
+            this.dataGridViewAppt.ReadOnly = true;
             this.dataGridViewAppt.RowHeadersVisible = false;
             this.dataGridViewAppt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewAppt.Size = new System.Drawing.Size(1012, 262);
@@ -161,33 +166,31 @@ namespace C969_LatoyaH
             this.rdBtnMnth.AutoSize = true;
             this.rdBtnMnth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdBtnMnth.ForeColor = System.Drawing.Color.Red;
-            this.rdBtnMnth.Location = new System.Drawing.Point(443, 60);
+            this.rdBtnMnth.Location = new System.Drawing.Point(696, 59);
             this.rdBtnMnth.Name = "rdBtnMnth";
             this.rdBtnMnth.Size = new System.Drawing.Size(65, 19);
             this.rdBtnMnth.TabIndex = 3;
             this.rdBtnMnth.TabStop = true;
             this.rdBtnMnth.Text = "Month";
             this.rdBtnMnth.UseVisualStyleBackColor = true;
-            this.rdBtnMnth.CheckedChanged += new System.EventHandler(this.rdBtnMnth_CheckedChanged);
             // 
             // rdBtnWk
             // 
             this.rdBtnWk.AutoSize = true;
             this.rdBtnWk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdBtnWk.ForeColor = System.Drawing.Color.Red;
-            this.rdBtnWk.Location = new System.Drawing.Point(709, 60);
+            this.rdBtnWk.Location = new System.Drawing.Point(351, 59);
             this.rdBtnWk.Name = "rdBtnWk";
             this.rdBtnWk.Size = new System.Drawing.Size(60, 19);
             this.rdBtnWk.TabIndex = 4;
             this.rdBtnWk.TabStop = true;
             this.rdBtnWk.Text = "Week\r\n";
             this.rdBtnWk.UseVisualStyleBackColor = true;
-            this.rdBtnWk.CheckedChanged += new System.EventHandler(this.rdBtnWk_CheckedChanged);
             // 
             // btnAddApp
             // 
             this.btnAddApp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddApp.Location = new System.Drawing.Point(257, 573);
+            this.btnAddApp.Location = new System.Drawing.Point(259, 586);
             this.btnAddApp.Name = "btnAddApp";
             this.btnAddApp.Size = new System.Drawing.Size(75, 41);
             this.btnAddApp.TabIndex = 16;
@@ -198,7 +201,7 @@ namespace C969_LatoyaH
             // btnUpdtApp
             // 
             this.btnUpdtApp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdtApp.Location = new System.Drawing.Point(606, 573);
+            this.btnUpdtApp.Location = new System.Drawing.Point(556, 586);
             this.btnUpdtApp.Name = "btnUpdtApp";
             this.btnUpdtApp.Size = new System.Drawing.Size(75, 41);
             this.btnUpdtApp.TabIndex = 17;
@@ -209,7 +212,7 @@ namespace C969_LatoyaH
             // btnDlApp
             // 
             this.btnDlApp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDlApp.Location = new System.Drawing.Point(926, 563);
+            this.btnDlApp.Location = new System.Drawing.Point(832, 586);
             this.btnDlApp.Name = "btnDlApp";
             this.btnDlApp.Size = new System.Drawing.Size(75, 41);
             this.btnDlApp.TabIndex = 18;
@@ -217,10 +220,19 @@ namespace C969_LatoyaH
             this.btnDlApp.UseVisualStyleBackColor = true;
             this.btnDlApp.Click += new System.EventHandler(this.btnDlApp_Click);
             // 
+            // client_scheduleDataSet
+            // 
+            this.client_scheduleDataSet.DataSetName = "client_scheduleDataSet";
+            this.client_scheduleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // clientscheduleDataSetBindingSource
+            // 
+            this.clientscheduleDataSetBindingSource.DataSource = this.client_scheduleDataSet;
+            this.clientscheduleDataSetBindingSource.Position = 0;
+            // 
             // monthCalendar1
             // 
-            this.monthCalendar1.CalendarDimensions = new System.Drawing.Size(2, 1);
-            this.monthCalendar1.Location = new System.Drawing.Point(377, 359);
+            this.monthCalendar1.Location = new System.Drawing.Point(369, 369);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 19;
             this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
@@ -241,10 +253,14 @@ namespace C969_LatoyaH
             this.Controls.Add(this.panel1);
             this.Name = "Appointments";
             this.Text = "Schedule";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Appointments_FormClosed);
+            this.Load += new System.EventHandler(this.Appointments_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.client_scheduleDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientscheduleDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,6 +281,8 @@ namespace C969_LatoyaH
         private System.Windows.Forms.Button btnAddApp;
         private System.Windows.Forms.Button btnUpdtApp;
         private System.Windows.Forms.Button btnDlApp;
+        private System.Windows.Forms.BindingSource clientscheduleDataSetBindingSource;
+        private client_scheduleDataSet client_scheduleDataSet;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }

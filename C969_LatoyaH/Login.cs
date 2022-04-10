@@ -12,39 +12,25 @@ using System.Windows.Forms;
 
 namespace C969_LatoyaH
 {
+
     public partial class Login : Form
     {
-        string loginError;
-        string loginSuccess;
+
+        private string lgLang;
+        private List<User> users;
         public Login()
         {
             InitializeComponent();
-            findLanguage();
+
         }
 
 
-        private void findLanguage()
+        
+        private void Login_Load(object sender, EventArgs e)
         {
-            switch (CultureInfo.CurrentCulture.ThreeLetterISOLanguageName)
-            {
-                case "fre":
-                    frenchLogin();
-                    break;
-                default:
-                    englishLogin();
-                    break;
-
-            }
-        }
-
-        private void englishLogin()
-        {
-            labelUsername.Text = "Username";
-            labelPassword.Text = "Password";
-            lblHeader.Text = "Acme Scheduling";
-            btnLogin.Text = "Login";
-            loginError = "Incorrect Username or Password";
-            loginSuccess = "Username and Password are successfull!";
+            lgLang = CultureInfo.CurrentCulture.ThreeLetterISOLanguageName;
+            users = DataContext.GetUsers();
+            if (lgLang == "fre") { frenchLogin(); }
         }
 
         private void frenchLogin()
@@ -55,84 +41,74 @@ namespace C969_LatoyaH
             lblHeader.Text = "Acme Planification";
             btnLogin.Text = "Connexion";
             btnClear.Text = "klir";
-            loginError = "nom d'utilisateur et mot de passe incorrects";
-            loginSuccess = "le nom d'utilisateur et le mot de passe sont reussis!";
+            //loginError = "nom d'utilisateur et mot de passe incorrects";
+            // loginAttempt = "le nom d'utilisateur et le mot de passe sont reussis!";
         }
-        private void btnLogin_Click(object sender, EventArgs e)
+
+        public void btnLogin_Click(object sender, EventArgs e)
         {
             string username = textUsername.Text;
             string password = textPassword.Text;
-            DataContext.Login(username, password);
-            
-
-            if (textUsername.Text.Trim().Length < 1)
-            {
-                MessageBox.Show("Username is empty");
-            }
-
-            if (textPassword.Text.Trim().Length < 1)
-            {
-                MessageBox.Show("Password is empty");
-            }
-
-            var curUser = User.UserId;
-
             try
             {
-
-                if (curUser != 0)
+                if (username == "" || password == "")
                 {
+                    if (lgLang == "fre")
+                    {
+                        throw new LGOutlier("Veuillez entrer un nom d’utilisateur valide");
 
-                    MessageBox.Show(loginSuccess, "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    this.Hide();
-
-                    CustomerRecords custRecords = new CustomerRecords(curUser);
-                    DataContext.ActivityLogs(User.UserName, " is logged in");
-                    custRecords.ShowDialog();
-                    this.Close();
+                    }
+                    throw new LGOutlier("Please enter a valid username");
                 }
-                else
+                List<User> loginUser = users.Where(user => user.UserName == username).ToList();
+
+                if (loginUser.Count < 1)
                 {
-                    MessageBox.Show(loginError, "alter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (lgLang == "fre")
+                    {
+                        throw new LGOutlier("L’utilisateur n’existe pas");
+
+                    }
+                    throw new LGOutlier("User doesn't exist");
                 }
 
-                //string sql = "server = localhost; port=3306; username = sqlUser; password=Passw0rd!; database = client_schedule";
-                //MySqlConnection con = new MySqlConnection(sql);
-                //MySqlDataAdapter sda = new MySqlDataAdapter("select count(*) from user where username= '" + textUsername.Text + "' and password='" + textPassword.Text + "'", con);
-                //DataTable dt = new DataTable();
-                //sda.Fill(dt);
 
-                //if (dt.Rows[0][0].ToString() == "1")
-                //{
-                //    MessageBox.Show(loginSuccess, "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                //    this.Hide();
+                if (loginUser[0].Password != password)
+                {
+                    if (lgLang == "fre")
+                    {
+                        throw new LGOutlier("Veuillez saisir un mot de passe valide");
 
-                //    CustomerRecords custRecords = new CustomerRecords(curUser);
-                //    custRecords.ShowDialog();
-                //    this.Close();
-                //}
-                //else
-                //{
-                //    MessageBox.Show(loginError, "alter", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
+                    }
+                    throw new LGOutlier("Please enter a valid password");
+
+                }
+                ActivityLogss.lgActv(loginUser[0]);
+
+                var mainfrm = new MainForm(loginUser[0]);
+                mainfrm.Show();
+                Hide();
+
+
+
 
             }
-            catch (MySqlException ex)
+            catch (LGOutlier ex)
             {
-                MessageBox.Show("MySql Connection\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cant log in " + ex);
 
             }
 
 
-}
+        }
 
-      
+
         private void btnClear_Click(object sender, EventArgs e)
         {
             textUsername.Text = "";
             textPassword.Text = "";
         }
-    }
+
+    }      
 }

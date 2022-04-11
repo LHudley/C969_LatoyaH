@@ -43,7 +43,6 @@ namespace C969_LatoyaH
             if (addressId > count)
             {
                 count = addressId;
-                count++;
             }
         }
 
@@ -51,6 +50,8 @@ namespace C969_LatoyaH
 
         public Address(string address1, string address2, int cityId, string postalCode, string phone, DateTime createDate,string createdBy, DateTime lastUpdate,string lastUpdateBy)
         {
+            count ++;
+            AddressId = count;
             Address1 = address1;
             Address2 = address2;
             CityId = cityId;

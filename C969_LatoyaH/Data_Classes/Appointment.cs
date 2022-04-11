@@ -25,14 +25,7 @@ namespace C969_LatoyaH
         
       
         private static int count = 0;
-        //private object customerId;
-        //private object type;
-        //private object start;
-        //private object end;
-        //private DateTime now1;
-        //private string userName1;
-        //private DateTime now2;
-        //private string userName2;
+       
 
         public Appointment(int appointmentId, int customerId, int userId, string type, DateTime start, DateTime end, DateTime createDate, string createdBy, DateTime lastUpdate,string lastUpdateBy)  
            
@@ -68,7 +61,7 @@ namespace C969_LatoyaH
         public Appointment(int customerId, int userId,  string type,  DateTime start, DateTime end, DateTime createDate, string createdBy, DateTime lastUpdate, string lastUpdateBy)
         {
             count++;
-            
+            AppointmentId = count;
             CustomerId = customerId;
             UserId = userId;
            

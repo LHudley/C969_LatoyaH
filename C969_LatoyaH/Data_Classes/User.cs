@@ -9,15 +9,7 @@ namespace C969_LatoyaH
     public  class User
     {
 
-        //private  int userId;
-        //private  string username;
-        //private  string password;
-        //private  byte active;
-        //private  DateTime createDate;
-        //private  string createdBy;
-        //private  DateTime lastUpdate;
-        //private  string lastUpdateBy;
-        public string user;
+        
         public   int UserId { get; set; }
         public  string UserName { get; set; }
         public  string Password { get; set; }

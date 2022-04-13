@@ -86,6 +86,7 @@ namespace C969_LatoyaH
         {
             RecordsdataGridView1.ClearSelection();
             emptyFields();
+            //lambda to grab list of cities
             Dictionary<int, string> ctNmDict = MainForm.cityDict.ToDictionary(dict => dict.Key, dict => dict.Value.CityName);
             comboBoxCity.DataSource = new BindingSource(ctNmDict, null);
             comboBoxCity.DisplayMember = "Value";

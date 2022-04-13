@@ -160,10 +160,12 @@ namespace C969_LatoyaH
             this.dataGridViewAppt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewAppt.Size = new System.Drawing.Size(1012, 262);
             this.dataGridViewAppt.TabIndex = 2;
+            this.dataGridViewAppt.BindingContextChanged += new System.EventHandler(this.dataGridViewAppt_BindingContextChanged);
             // 
             // rdBtnMnth
             // 
             this.rdBtnMnth.AutoSize = true;
+            this.rdBtnMnth.Checked = true;
             this.rdBtnMnth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdBtnMnth.ForeColor = System.Drawing.Color.Red;
             this.rdBtnMnth.Location = new System.Drawing.Point(696, 59);
@@ -173,6 +175,7 @@ namespace C969_LatoyaH
             this.rdBtnMnth.TabStop = true;
             this.rdBtnMnth.Text = "Month";
             this.rdBtnMnth.UseVisualStyleBackColor = true;
+            this.rdBtnMnth.CheckedChanged += new System.EventHandler(this.rdBtnMnth_CheckedChanged_1);
             // 
             // rdBtnWk
             // 
@@ -183,9 +186,9 @@ namespace C969_LatoyaH
             this.rdBtnWk.Name = "rdBtnWk";
             this.rdBtnWk.Size = new System.Drawing.Size(60, 19);
             this.rdBtnWk.TabIndex = 4;
-            this.rdBtnWk.TabStop = true;
             this.rdBtnWk.Text = "Week\r\n";
             this.rdBtnWk.UseVisualStyleBackColor = true;
+            this.rdBtnWk.CheckedChanged += new System.EventHandler(this.rdBtnWk_CheckedChanged_1);
             // 
             // btnAddApp
             // 

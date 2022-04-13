@@ -38,9 +38,8 @@ namespace C969_LatoyaH
             comboBox1.SelectedItem = null;
             comboBox2.DataSource = new[] {"Presentation",
                        "Scrum",
-                       "Status Update",
-                       "Brain Storming",
-                       "Informational"};
+                       "Consultation"
+            };
             comboBox2.SelectedItem = null;
             if (selApptId >= 0)
             {

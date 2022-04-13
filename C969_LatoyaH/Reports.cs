@@ -28,7 +28,6 @@ namespace C969_LatoyaH
         {
             if (rdBtnType.Checked)
             {
-                //richTextBox1.Text = string.Empty;
                 var rpt = new StringBuilder();
                 rpt.AppendLine("Number of Appointment types by month: (Previous, Current, Next)");
                 rpt.AppendLine();

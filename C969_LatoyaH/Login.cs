@@ -31,20 +31,20 @@ namespace C969_LatoyaH
             culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
             users = DataContext.GetUsers();
             lblError.Text = "";
-            if (culture == "fr-FR")
+            if (culture == "es")
             {
-                frenchLogin();
+                spanishLogin();
             }
         }
-        private void frenchLogin()
+        private void spanishLogin()
         {
            
 
-            labelUsername.Text = "Nom D' Utilisateur";
-            labelPassword.Text = "Le Mot De Passe";
-            lblHeader.Text = "Acme Planification";
-            btnLogin.Text = "Connexion";
-            btnClear.Text = "klir";
+            labelUsername.Text = "Nombre de usuario";
+            labelPassword.Text = "Clave";
+            lblHeader.Text = " Acme Programadora";
+            btnLogin.Text = "Acceso";
+            btnClear.Text = "Clara";
             
         }
 
@@ -63,9 +63,9 @@ namespace C969_LatoyaH
                 if (username == "" || password == "")
                 {
                     
-                    if (culture == "fr-FR")
+                    if (culture == "es")
                     {
-                        throw new LGOutlier("Veuillez entrer un nom d’utilisateur valide");
+                        throw new LGOutlier("Por favor ingrese un nombre de usuario valido");
 
                     }
                     throw new LGOutlier("Please enter a valid username");
@@ -76,9 +76,9 @@ namespace C969_LatoyaH
 
                 if (loginUser.Count < 1)
                 {
-                    if (culture == "fr-FR")
+                    if (culture == "es")
                     {
-                        throw new LGOutlier("L’utilisateur n’existe pas");
+                        throw new LGOutlier("La usuario no existe");
 
                     }
                     throw new LGOutlier("User doesn't exist");
@@ -88,9 +88,9 @@ namespace C969_LatoyaH
 
                 if (loginUser[0].Password != password)
                 {
-                    if (culture == "fr-FR")
+                    if (culture == "es")
                     {
-                        throw new LGOutlier("Veuillez saisir un mot de passe valide");
+                        throw new LGOutlier("Por favor introduce una contrasena valida");
 
                     }
                     throw new LGOutlier("Please enter a valid password");

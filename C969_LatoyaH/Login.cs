@@ -16,24 +16,12 @@ namespace C969_LatoyaH
     public partial class Login : Form
     {
 
-        private string lgLang;
+        private string culture;
         private List<User> users;
         public Login()
         {
             InitializeComponent();
 
-        }
-
-
-        
-        private void Login_Load(object sender, EventArgs e)
-        {
-            System.Globalization.CultureInfo lgLang = new System.Globalization.CultureInfo("fr-FR");
-            System.Threading.Thread.CurrentThread.CurrentCulture = lgLang;
-           
-             //lgLang = CultureInfo.CurrentCulture.ThreeLetterISOLanguageName;
-            users = DataContext.GetUsers();
-            if (lgLang == "fr-FR") { frenchLogin(); }
         }
 
         private void frenchLogin()
@@ -47,6 +35,18 @@ namespace C969_LatoyaH
             //loginError = "nom d'utilisateur et mot de passe incorrects";
             // loginAttempt = "le nom d'utilisateur et le mot de passe sont reussis!";
         }
+        
+        private void Login_Load(object sender, EventArgs e)
+        {
+           // System.Globalization.CultureInfo lgLang = new System.Globalization.CultureInfo("fr-FR");
+           // System.Threading.Thread.CurrentThread.CurrentCulture = lgLang;
+           
+            culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+            users = DataContext.GetUsers();
+            if (culture == "fr") { frenchLogin(); }
+        }
+
+        
 
         public void btnLogin_Click(object sender, EventArgs e)
         {
@@ -56,7 +56,7 @@ namespace C969_LatoyaH
             {
                 if (username == "" || password == "")
                 {
-                    if (lgLang == "fre")
+                    if (culture == "fr")
                     {
                         throw new LGOutlier("Veuillez entrer un nom d’utilisateur valide");
 
@@ -67,7 +67,7 @@ namespace C969_LatoyaH
 
                 if (loginUser.Count < 1)
                 {
-                    if (lgLang == "fre")
+                    if (culture == "fr")
                     {
                         throw new LGOutlier("L’utilisateur n’existe pas");
 
@@ -79,7 +79,7 @@ namespace C969_LatoyaH
 
                 if (loginUser[0].Password != password)
                 {
-                    if (lgLang == "fre")
+                    if (culture == "fr")
                     {
                         throw new LGOutlier("Veuillez saisir un mot de passe valide");
 

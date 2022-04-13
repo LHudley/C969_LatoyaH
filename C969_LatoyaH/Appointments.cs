@@ -92,9 +92,9 @@ namespace C969_LatoyaH
 
         private void updateWk()
         {
-            DateTime startOfMth = gtStartofWk(selDate);
-            DateTime endOfMth = gtEndofWk(selDate);
-            dataGridViewAppt.DataSource = gtApptInTm(startOfMth, endOfMth);
+            DateTime startWk = gtStartofWk(selDate);
+            DateTime endWk = gtEndofWk(selDate);
+            dataGridViewAppt.DataSource = gtApptInTm(startWk, endWk);
 
         }
 

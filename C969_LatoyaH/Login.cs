@@ -25,13 +25,13 @@ namespace C969_LatoyaH
           
            
         }
-        private void Login_Load(object sender, EventArgs e)
+        private void Login_Load_1(object sender, EventArgs e)
         {
 
             culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
             users = DataContext.GetUsers();
             lblError.Text = "";
-            if (culture == "fr")
+            if (culture == "fr-FR")
             {
                 frenchLogin();
             }
@@ -63,7 +63,7 @@ namespace C969_LatoyaH
                 if (username == "" || password == "")
                 {
                     
-                    if (culture == "fr")
+                    if (culture == "fr-FR")
                     {
                         throw new LGOutlier("Veuillez entrer un nom d’utilisateur valide");
 
@@ -76,7 +76,7 @@ namespace C969_LatoyaH
 
                 if (loginUser.Count < 1)
                 {
-                    if (culture == "fr")
+                    if (culture == "fr-FR")
                     {
                         throw new LGOutlier("L’utilisateur n’existe pas");
 
@@ -88,7 +88,7 @@ namespace C969_LatoyaH
 
                 if (loginUser[0].Password != password)
                 {
-                    if (culture == "fr")
+                    if (culture == "fr-FR")
                     {
                         throw new LGOutlier("Veuillez saisir un mot de passe valide");
 
@@ -122,5 +122,6 @@ namespace C969_LatoyaH
             textPassword.Text = "";
         }
 
+       
     }      
 }

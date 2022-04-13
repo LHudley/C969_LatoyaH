@@ -138,6 +138,7 @@ namespace C969_LatoyaH
         private void updateMth()
         {
 
+
             DateTime startOfMth = gtStartofMth(selDate);
             DateTime endOfMth = gtEndofMth(selDate);
             dataGridViewAppt.DataSource = gtApptInTm(startOfMth, endOfMth);

@@ -22,10 +22,20 @@ namespace C969_LatoyaH
         public Login()
         {
             InitializeComponent();
-            findLang();
-            //frenchLogin();
+          
+           
         }
+        private void Login_Load(object sender, EventArgs e)
+        {
 
+            culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+            users = DataContext.GetUsers();
+            lblError.Text = "";
+            if (culture == "fr")
+            {
+                frenchLogin();
+            }
+        }
         private void frenchLogin()
         {
            
@@ -38,20 +48,9 @@ namespace C969_LatoyaH
             
         }
 
-        
-        private void findLang()
-        {
-            culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-            users = DataContext.GetUsers();
-            if (culture == "fr") { frenchLogin(); }
-        }
-        //private void Login_Load(object sender, EventArgs e)
-        //{
-            
-        //    culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-        //    users = DataContext.GetUsers();
-        //    if (culture == "fr") { frenchLogin(); }
-        //}
+
+
+       
 
 
 
@@ -71,6 +70,8 @@ namespace C969_LatoyaH
                     }
                     throw new LGOutlier("Please enter a valid username");
                 }
+
+                //lambda to confirm username exist in database
                 List<User> loginUser = users.Where(user => user.UserName == username).ToList();
 
                 if (loginUser.Count < 1)
@@ -105,9 +106,9 @@ namespace C969_LatoyaH
 
 
             }
-            catch (LGOutlier ex)
+            catch (LGOutlier error)
             {
-                MessageBox.Show("Cant log in " + ex);
+                lblError.Text = error.Message;
 
             }
 

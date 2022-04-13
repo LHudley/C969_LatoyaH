@@ -38,6 +38,7 @@ namespace C969_LatoyaH
             this.btnClear = new System.Windows.Forms.Button();
             this.lblHeader = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
+            this.lblError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,6 +132,15 @@ namespace C969_LatoyaH
             this.lblTime.Size = new System.Drawing.Size(0, 15);
             this.lblTime.TabIndex = 8;
             // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.lblError.Location = new System.Drawing.Point(466, 388);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(0, 13);
+            this.lblError.TabIndex = 9;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -138,6 +148,7 @@ namespace C969_LatoyaH
             this.BackgroundImage = global::C969_LatoyaH.Properties.Resources.pexels_francesco_ungaro_281260;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblError);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.btnClear);
@@ -165,6 +176,7 @@ namespace C969_LatoyaH
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Label lblError;
     }
 }
 

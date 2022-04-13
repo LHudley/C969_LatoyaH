@@ -118,7 +118,9 @@ namespace C969_LatoyaH
                 rpt.AppendLine();
                 DateTime begMoth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
                 DateTime endMoth = begMoth.AddMonths(1).AddMilliseconds(-1);
-                var consLsts = MainForm.ApptLt.OrderBy(app => app.Start).Where(app => app.Start >= begMoth && app.Start <= endMoth).GroupBy(app => app.UserId);
+                var consLsts = MainForm.ApptLt.Where(app => app.Start >= begMoth && app.Start <= endMoth).GroupBy(app => app.UserId);
+
+//.OrderBy(app => app.Start).Where(app => app.Start >= begMoth && app.Start <= endMoth).GroupBy(app => app.UserId);
 
                 foreach (var consLstts in consLsts)
                 {

@@ -28,9 +28,12 @@ namespace C969_LatoyaH
         
         private void Login_Load(object sender, EventArgs e)
         {
-            lgLang = CultureInfo.CurrentCulture.ThreeLetterISOLanguageName;
+            System.Globalization.CultureInfo lgLang = new System.Globalization.CultureInfo("fr-FR");
+            System.Threading.Thread.CurrentThread.CurrentCulture = lgLang;
+           
+             //lgLang = CultureInfo.CurrentCulture.ThreeLetterISOLanguageName;
             users = DataContext.GetUsers();
-            if (lgLang == "fre") { frenchLogin(); }
+            if (lgLang == "fr-FR") { frenchLogin(); }
         }
 
         private void frenchLogin()

@@ -15,38 +15,45 @@ namespace C969_LatoyaH
 
     public partial class Login : Form
     {
-
+       
         private string culture;
         private List<User> users;
+        
         public Login()
         {
             InitializeComponent();
-
+            findLang();
+            //frenchLogin();
         }
 
         private void frenchLogin()
         {
+           
 
             labelUsername.Text = "Nom D' Utilisateur";
             labelPassword.Text = "Le Mot De Passe";
             lblHeader.Text = "Acme Planification";
             btnLogin.Text = "Connexion";
             btnClear.Text = "klir";
-            //loginError = "nom d'utilisateur et mot de passe incorrects";
-            // loginAttempt = "le nom d'utilisateur et le mot de passe sont reussis!";
+            
         }
+
         
-        private void Login_Load(object sender, EventArgs e)
+        private void findLang()
         {
-           // System.Globalization.CultureInfo lgLang = new System.Globalization.CultureInfo("fr-FR");
-           // System.Threading.Thread.CurrentThread.CurrentCulture = lgLang;
-           
             culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
             users = DataContext.GetUsers();
             if (culture == "fr") { frenchLogin(); }
         }
+        //private void Login_Load(object sender, EventArgs e)
+        //{
+            
+        //    culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+        //    users = DataContext.GetUsers();
+        //    if (culture == "fr") { frenchLogin(); }
+        //}
 
-        
+
 
         public void btnLogin_Click(object sender, EventArgs e)
         {
@@ -56,6 +63,7 @@ namespace C969_LatoyaH
             {
                 if (username == "" || password == "")
                 {
+                    
                     if (culture == "fr")
                     {
                         throw new LGOutlier("Veuillez entrer un nom d’utilisateur valide");

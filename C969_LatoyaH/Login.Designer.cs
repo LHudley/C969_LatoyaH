@@ -148,7 +148,6 @@ namespace C969_LatoyaH
             this.Controls.Add(this.textUsername);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Login";
-            this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

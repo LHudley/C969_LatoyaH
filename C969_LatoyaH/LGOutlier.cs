@@ -8,8 +8,15 @@ namespace C969_LatoyaH
 {
     class LGOutlier:ApplicationException
     {
-        public LGOutlier(string v) : base("Input error")
+        public LGOutlier() : base("Input error")
         {
+        }public LGOutlier(string exemptionMessage) : base(exemptionMessage)
+        {
+
+        }
+        public LGOutlier(string exemptionMessage, ApplicationException inner): base(exemptionMessage, inner)
+        {
+
         }
 
        

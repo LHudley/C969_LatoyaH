@@ -14,7 +14,7 @@ namespace C969_LatoyaH
 {
     public static class DataContext
     {
-        public const string connString = "server = 127.0.0.1; port=3306; username = root; password=Passw0rd!; database = client_schedule";
+        public const string connString = "server = localhost; port=3306; username = sqlUser; password=Passw0rd!; database = client_schedule";
         private static MySqlConnection mysqlcon = new MySqlConnection(connString);
        
 

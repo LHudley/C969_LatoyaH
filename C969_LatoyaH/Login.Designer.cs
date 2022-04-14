@@ -74,9 +74,9 @@ namespace C969_LatoyaH
             this.labelUsername.ForeColor = System.Drawing.Color.White;
             this.labelUsername.Location = new System.Drawing.Point(280, 119);
             this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(96, 20);
+            this.labelUsername.Size = new System.Drawing.Size(91, 20);
             this.labelUsername.TabIndex = 3;
-            this.labelUsername.Text = "Username:";
+            this.labelUsername.Text = "Username";
             // 
             // labelPassword
             // 
@@ -159,7 +159,7 @@ namespace C969_LatoyaH
             this.Controls.Add(this.textUsername);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Login";
-            this.Load += new System.EventHandler(this.Login_Load_1);
+            this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -70,7 +70,7 @@ namespace C969_LatoyaH
 
         }
 
-        //Click calendar after making changes to view updated appointment ///////////
+        
         private void btnUpdtApp_Click(object sender, EventArgs e)
         {
             try

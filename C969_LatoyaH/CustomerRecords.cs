@@ -35,7 +35,7 @@ namespace C969_LatoyaH
             comboBoxCountry.ValueMember = "Key";
             comboBoxCountry.SelectedItem = null;
             Dictionary<int, string> cityDicNm = MainForm.cityDict.ToDictionary(dic => dic.Key, dic => dic.Value.CityName);
-            comboBoxCountry.DataSource = new BindingSource(cityDicNm, null);
+            comboBoxCity.DataSource = new BindingSource(cityDicNm, null);
             comboBoxCity.DisplayMember = "Value";
             comboBoxCity.ValueMember = "Key";
             comboBoxCity.SelectedItem = null;

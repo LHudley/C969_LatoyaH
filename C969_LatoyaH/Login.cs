@@ -25,25 +25,16 @@ namespace C969_LatoyaH
           
            
         }
-        private void Login_Load_1(object sender, EventArgs e)
-        {
-
-            culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-            users = DataContext.GetUsers();
-            lblError.Text = "";
-            if (culture == "es")
-            {
-                spanishLogin();
-            }
-        }
+        
+       
         private void spanishLogin()
         {
            
 
-            labelUsername.Text = "Nombre de usuario";
-            labelPassword.Text = "Clave";
+            labelUsername.Text = "Nombre de usario";
+            labelPassword.Text = "Contrasena";
             lblHeader.Text = " Acme Programadora";
-            btnLogin.Text = "Acceso";
+            btnLogin.Text = "Iniciar Sesion";
             btnClear.Text = "Clara";
             
         }
@@ -122,6 +113,17 @@ namespace C969_LatoyaH
             textPassword.Text = "";
         }
 
-       
+        
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+            culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+            users = DataContext.GetUsers();
+            lblError.Text = "";
+            if (culture == "es")
+            {
+                spanishLogin();
+            }
+        }
     }      
 }

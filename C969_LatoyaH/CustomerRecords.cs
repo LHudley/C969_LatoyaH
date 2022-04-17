@@ -219,14 +219,29 @@ namespace C969_LatoyaH
                     ttip.Show("Address is required", txtCusAdd1);
                     return;
                 }
+                 if (string.IsNullOrWhiteSpace(txtCusAdd2.Text))
+                {
+                    ttip.Show("Second line address required ", txtCusAdd2);
+                    return;
+                }
                 if (string.IsNullOrWhiteSpace(comboBoxCity.Text))
                 {
                     ttip.Show("City is required ", comboBoxCity);
                     return;
                 }
+                if (string.IsNullOrWhiteSpace(txtCusZip.Text))
+                {
+                    ttip.Show("Zip code is required ", txtCusZip);
+                    return;
+                }
                 if (string.IsNullOrWhiteSpace(comboBoxCountry.Text))
                 {
                     ttip.Show("Country is required", comboBoxCountry);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(txtCusPhone.Text))
+                {
+                    ttip.Show("Phone number is required ", txtCusPhone);
                     return;
                 }
                 string customerName = txtCusName.Text;

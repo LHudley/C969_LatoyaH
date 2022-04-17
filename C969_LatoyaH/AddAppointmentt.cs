@@ -82,11 +82,11 @@ namespace C969_LatoyaH
 
                 foreach (var appt in MainForm.ApptLt)
                 {
-                    if (appt.Start <= selStart && appt.End > selStart && (!(selApptId >= 0)))
+                    if (appt.Start <= selStart && appt.End > selStart && (!(selApptId >= 0)) || selApptId >= 0)
                     {
                         ovrlap = true;
                     }
-                    if (selStart <= appt.Start && selEnd > appt.Start && (!(selApptId >= 0)))
+                    if (selStart <= appt.Start && selEnd > appt.Start && (!(selApptId >= 0)) || selApptId >= 0)
                     {
                         ovrlap = true;
                     }

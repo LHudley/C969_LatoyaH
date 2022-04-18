@@ -91,10 +91,10 @@ namespace C969_LatoyaH
                         ovrlap = true;
                     }
                 }
-                if (selCustId < 1) { MessageBox.Show("Please choose a customer"); }
-                if (selStart > selEnd) { MessageBox.Show("End time should NOT be before start time."); }
+                if (selCustId < 1) { throw new ApplicationException ("Please choose a customer"); }
+                if (selStart > selEnd) { throw new ApplicationException ("End time should NOT be before start time."); }
                 if ((selStart.TimeOfDay < openBusiness) || (selStart.TimeOfDay > closedBusiness) || (selEnd.TimeOfDay < openBusiness) || (selEnd.TimeOfDay > closedBusiness)) { throw new ApplicationException("Please schedule during office hours 8am - 5pm"); }
-                if (ovrlap) { MessageBox.Show("Warning! Appointments are overlapping"); }
+                if (ovrlap) { throw new ApplicationException ("Warning! Appointments are overlapping"); }
                 if (selApptId >= 0) 
                 { 
                     Appointment appointment = MainForm.ApptLt.Where(appt => appt.AppointmentId == selApptId).Single(); 
@@ -112,9 +112,9 @@ namespace C969_LatoyaH
             {
                 MessageBox.Show(ex.Message, "Directions", MessageBoxButtons.OK);
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
         
 
